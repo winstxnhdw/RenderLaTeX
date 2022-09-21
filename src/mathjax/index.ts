@@ -19,7 +19,7 @@ const mathjax_options = {
   containerWidth: 1280
 }
 
-export default function get_mathjax_svg(mathjax_input: string): string {
+export default function mathjax_to_svg(mathjax_input: string): string {
   const node = mathjax_document.convert(mathjax_input, mathjax_options)
   return adaptor.innerHTML(node)
 }
