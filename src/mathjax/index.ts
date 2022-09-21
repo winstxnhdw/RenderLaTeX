@@ -8,9 +8,10 @@ import { RegisterHTMLHandler } from 'mathjax-full/js/handlers/html'
 const adaptor = liteAdaptor()
 RegisterHTMLHandler(adaptor)
 
-const tex = new TeX({ packages: AllPackages.join(', ').split(/\s*,\s*/) })
-const svg = new SVG({ fontCache: 'local' })
-const mathjax_document = mathjax.document('', { InputJax: tex, OutputJax: svg })
+const mathjax_document = mathjax.document('', {
+  InputJax: new TeX({ packages: AllPackages.join(', ').split(/\s*,\s*/) }),
+  OutputJax: new SVG({ fontCache: 'local' })
+})
 
 const mathjax_options = {
   em: 16,
