@@ -3,12 +3,14 @@
     "start": "nodemon --exec ts-node -r tsconfig-paths/register src/index.ts"
   },
   "dependencies": {
+    "aws-lambda": "^1.0.7",
     "dotenv": "^16.0.2",
     "envalid": "^7.3.1",
     "mathjax-full": "^3.2.2",
     "twitter-api-v2": "^1.12.7"
   },
   "devDependencies": {
+    "@types/aws-lambda": "^8.10.104",
     "@types/node": "^18.7.18",
     "nodemon": "^2.0.20",
     "prettier": "^2.7.1",

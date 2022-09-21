@@ -1,13 +1,14 @@
-import get_mathjax_svg from './mathjax'
+import type { Context, APIGatewayEvent, APIGatewayProxyResult } from 'aws-lambda'
+import bot from '@/bot'
 
-console.log(
-  get_mathjax_svg(`
-f_a =
-\\begin{cases}
-    f_i + 125n, & \\text{if}\\ n=0 \\\\
-    f_i + 125n, & \\text{if}\\ n=1 \\\\
-    f_i + 125n, & \\text{if}\\ n=2 \\\\
-    f_i + 125n, & \\text{if}\\ n=3
-\\end{cases}
-,`)
-)
+async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
+  bot()
+
+  return {
+    statusCode: 200,
+    body: JSON.stringify({
+      message: 'Lambda function has successfully executed.',
+      input: event
+    })
+  }
+}
