@@ -9,7 +9,6 @@
     "twitter-api-v2": "^1.12.7"
   },
   "devDependencies": {
-    "@types/mathjax": "^0.0.37",
     "@types/node": "^18.7.18",
     "nodemon": "^2.0.20",
     "prettier": "^2.7.1",
