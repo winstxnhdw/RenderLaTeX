@@ -2,7 +2,7 @@ import type { Context, APIGatewayEvent, APIGatewayProxyResult } from 'aws-lambda
 import Bot from '@/bot'
 
 async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
-  Bot.init()
+  Bot.start()
 
   return {
     statusCode: 200,
@@ -12,3 +12,5 @@ async function handler(event: APIGatewayEvent, context: Context): Promise<APIGat
     })
   }
 }
+
+Bot.start()
