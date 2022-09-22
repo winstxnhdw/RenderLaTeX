@@ -3,7 +3,7 @@
 ## Setup
 
 ```bash
-yarn
+yarn --ignore-scripts
 ```
 
 ## Usage
