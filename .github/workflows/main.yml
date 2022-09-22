@@ -25,7 +25,7 @@ jobs:
             ${{ runner.os }}-node-
 
       - name: Install node dependencies
-        run: npm ci
+        run: yarn --frozen-lockfile
 
       - name: Run tests
-        run: npm test
+        run: yarn test
