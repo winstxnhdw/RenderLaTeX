@@ -28,4 +28,4 @@ jobs:
         run: yarn --frozen-lockfile --ignore-scripts
 
       - name: Run tests
-        run: yarn test
+        run: yarn testci
