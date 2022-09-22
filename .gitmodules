@@ -1,0 +1,4 @@
+[submodule "src/plugins/canvas-webp"]
+	path = src/plugins/canvas-webp
+	url = https://github.com/node-gfx/node-canvas-webp.git
+	shallow = true

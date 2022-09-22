@@ -2,12 +2,12 @@
   "scripts": {
     "start": "nodemon --exec ts-node -r tsconfig-paths/register src/index.ts",
     "test": "mocha --require ts-node/register --extensions ts --watch --watch-files src 'tests/**/*.ts'",
-    "testci": "mocha --require ts-node/register --extensions ts 'tests/**/*.ts'"
+    "testci": "mocha --require ts-node/register --extensions ts 'tests/**/*.ts'",
+    "postinstall": "node-gyp rebuild -C src/plugins/canvas-webp"
   },
   "dependencies": {
     "aws-lambda": "^1.0.7",
     "canvas": "^2.10.1",
-    "canvas-webp": "^1.0.0",
     "dotenv": "^16.0.2",
     "envalid": "^7.3.1",
     "mathjax-full": "^3.2.2",

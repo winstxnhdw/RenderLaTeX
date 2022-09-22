@@ -370,13 +370,6 @@ camelcase@^6.0.0:
   resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-6.3.0.tgz#5685b95eb209ac9c0c177467778c9c84df58ba9a"
   integrity sha512-Gmy6FhYlCY7uOElZUSbxo2UCDH8owEk996gkbrpsgGtrJLM3J7jGxl9Ic7Qwwj4ivOE5AWZWRMecDdF7hqGjFA==
 
-canvas-webp@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/canvas-webp/-/canvas-webp-1.0.0.tgz#12be1afc5d7f08f56a63d77ebfcfa8e86a4742cf"
-  integrity sha512-ALDq+f/udN50dfcxB3L1NveohDo8Wtq5zRA7MrrZJrIgeX2O/MTLHnAoZ95W+zpVsG4eRbQQnm9WZWvDrBB6CQ==
-  dependencies:
-    nan "^2.14.2"
-
 canvas@^2.10.1:
   version "2.10.1"
   resolved "https://registry.yarnpkg.com/canvas/-/canvas-2.10.1.tgz#fbfd4b1b3b106c3454481d79d363ebadf8811c08"
@@ -1180,7 +1173,7 @@ ms@2.1.3, ms@^2.1.1:
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.1.3.tgz#574c8138ce1d2b5861f0b44579dbadd60c6615b2"
   integrity sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==
 
-nan@^2.14.2, nan@^2.15.0:
+nan@^2.15.0:
   version "2.16.0"
   resolved "https://registry.yarnpkg.com/nan/-/nan-2.16.0.tgz#664f43e45460fb98faf00edca0bb0d7b8dce7916"
   integrity sha512-UdAqHyFngu7TfQKsCBgAA6pWDkT8MAO7d0jyOecVhN5354xbLqdn8mV9Tat9gepAupm0bt2DbeaSC8vS52MuFA==
