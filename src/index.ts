@@ -13,4 +13,5 @@ async function handler(event: APIGatewayEvent, context: Context): Promise<APIGat
   }
 }
 
+// Remove later
 Bot.start()
