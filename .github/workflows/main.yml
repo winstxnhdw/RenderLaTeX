@@ -27,7 +27,7 @@ jobs:
       #       ${{ runner.os }}-node-
 
       - name: Install node dependencies
-        run: yarn
+        run: npm i
 
       - name: Run tests
         run: yarn testci
