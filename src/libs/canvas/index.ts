@@ -1,5 +1,5 @@
 import { createCanvas, Image } from 'canvas'
-import '@ /plugins/canvas-webp'
+import '@/plugins/canvas-webp'
 import type { ScalableVectorObject } from '@/libs/mathjax'
 
 interface Resolution {
