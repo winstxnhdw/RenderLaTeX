@@ -13,8 +13,8 @@ interface VectorToCanvasOptions {
 
 const create_canvas = (resolution: Resolution) => createCanvas(resolution.width, resolution.height)
 
-const img = new Image()
-img.onerror = (err) => {
+const image = new Image()
+image.onerror = (err) => {
   throw err
 }
 
@@ -23,12 +23,12 @@ export default function svg_to_webp(svg: ScalableVectorObject, options: VectorTo
   const canvas = create_canvas(options.canvas)
   const ctx = canvas.getContext('2d')
 
-  img.onload = () => {
+  image.onload = () => {
     const height_offset = 0.5 * (canvas.height - svg.height)
     const width_offset = 0.5 * (canvas.width - svg.width)
-    ctx.drawImage(img, width_offset, height_offset)
+    ctx.drawImage(image, width_offset, height_offset)
   }
 
-  img.src = `data:image/svg+xml;charset=utf-8,${svg.to_string()}`
+  image.src = `data:image/svg+xml;charset=utf-8,${svg.to_string()}`
   return canvas.toBuffer('image/webp')
 }
