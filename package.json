@@ -5,6 +5,7 @@
     "dev": "node -r @swc/register src/index.ts",
     "test": "mocha --require @swc-node/register --extensions ts --watch --watch-files src 'tests/**/*.ts'",
     "testci": "mocha --require @swc-node/register --extensions ts 'tests/**/*.ts'"
+    "postinstall": "node-gyp rebuild -C src/plugins/canvas-webp"
   },
   "dependencies": {
     "aws-lambda": "^1.0.7",
