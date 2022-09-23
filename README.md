@@ -10,6 +10,8 @@ git clone --recursive https://github.com/winstxnhdw/latex-bot.git
 
 Install and build the dependencies.
 
+> Ignore the `make` warnings.
+
 ```bash
 yarn
 ```

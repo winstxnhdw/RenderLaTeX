@@ -11,9 +11,19 @@ import * as fs from 'fs'
 
 export default class Bot {
   static start() {
-    const svg = mathjax_to_svg(`\\frac{x}{2}`)
-    const webp = svg_to_webp(svg)
-    fs.writeFile('test.webp', webp, (err) => {
+    const svg_object = mathjax_to_svg(`\\frac{x}{2} + x + x + x + x + x + x + x + x + x + x + x`)
+    const webp_buffer = svg_to_webp(svg_object, {
+      svg: {
+        width: 1100,
+        height: 600
+      },
+      canvas: {
+        width: 1200,
+        height: 675
+      }
+    })
+
+    fs.writeFile('test.webp', webp_buffer, (err) => {
       if (!err) console.log('success')
     })
   }

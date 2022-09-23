@@ -1,16 +1,32 @@
-import { createCanvas, Image } from 'canvas'
+import { CanvasWebp, createCanvas, Image } from 'canvas'
 import '@/plugins/canvas-webp'
+import type { ScalableVectorObject } from '@/libs/mathjax'
 
-const canvas = createCanvas(1000, 1000)
-const ctx = canvas.getContext('2d')
+interface Resolution {
+  width: number
+  height: number
+}
+interface VectorToCanvasOptions {
+  svg: Resolution
+  canvas: Resolution
+}
+
+const create_canvas = (resolution: Resolution) => createCanvas(resolution.width, resolution.height)
 
 const img = new Image()
-img.onload = () => ctx.drawImage(img, 0, 0)
 img.onerror = (err) => {
   throw err
 }
 
-export default function svg_to_webp(svg: string) {
-  img.src = `data:image/svg+xml;charset=utf-8,${svg}`
+export default function svg_to_webp(svg: ScalableVectorObject, options: VectorToCanvasOptions): Buffer {
+  svg.set_resolution(options.svg)
+  const canvas = create_canvas(options.canvas)
+  const ctx = canvas.getContext('2d')
+
+  const height_offset = 0.5 * (canvas.height - svg.height)
+  const width_offset = 0.5 * (canvas.width - svg.width)
+  img.onload = () => ctx.drawImage(img, width_offset, height_offset)
+
+  img.src = `data:image/svg+xml;charset=utf-8,${svg.to_string()}`
   return canvas.toBuffer('image/webp')
 }

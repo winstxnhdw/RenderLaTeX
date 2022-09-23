@@ -1,5 +1,5 @@
-import type { Context, APIGatewayEvent, APIGatewayProxyResult } from 'aws-lambda'
 import Bot from '@/bot'
+import type { Context, APIGatewayEvent, APIGatewayProxyResult } from 'aws-lambda'
 
 async function handler(event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
   Bot.start()
