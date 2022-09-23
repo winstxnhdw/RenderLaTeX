@@ -1,11 +1,13 @@
-// import TwitterApi from 'twitter-api-v2'
+import TwitterApi from 'twitter-api-v2'
 // import config from '@/config'
 import mathjax_to_svg from '@/libs/mathjax'
 import svg_to_webp from '@/libs/canvas'
 
 // const user_client = new TwitterApi({
-//   appKey: config.TWITTER_APP_KEY,
-//   appSecret: config.TWITTER_APP_SECRET
+//   appKey: config.TWITTER_API_KEY,
+//   appSecret: config.TWITTER_API_SECRET,
+//   accessToken: config.TWITTER_OAUTH_TOKEN,
+//   accessSecret: config.TWITTER_OAUTH_TOKEN_SECRET
 // })
 
 export default class Bot {
