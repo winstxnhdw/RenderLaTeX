@@ -1,5 +1,5 @@
-import mathjax_to_svg from '@/libs/mathjax'
-import svg_to_webp from '@/libs/canvas'
+import mathjax_to_svg from '@/libs/MathJax'
+import svg_to_webp from '@/libs/Canvas'
 
 export default function render_webp_latex(mathjax: string) {
   const svg_object = mathjax_to_svg(mathjax)

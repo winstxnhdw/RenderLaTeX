@@ -1,5 +1,5 @@
-import svg_to_webp from '@/libs/canvas'
-import mathjax_to_svg from '@/libs/mathjax'
+import svg_to_webp from '@/libs/Canvas'
+import mathjax_to_svg from '@/libs/MathJax'
 import { writeFile, unlink } from 'fs'
 import { expect } from 'chai'
 

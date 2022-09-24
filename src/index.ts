@@ -1,6 +1,6 @@
 import render_webp_latex from '@/render'
 import { commands } from './bot'
-import { twitter_client, twitter_activity } from './libs/twitter'
+import { twitter_client, twitter_activity } from '@/libs/Twitter/index'
 import { isExpectEventType } from 'twict'
 import serverless from 'serverless-http'
 
