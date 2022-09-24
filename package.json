@@ -1,10 +1,10 @@
 {
   "scripts": {
-    "start": "nodemon --exec ts-node -r tsconfig-paths/register src/index.ts",
-    "build": "tsc --project tsconfig.build.json",
     "dev": "node -r @swc-node/register src/index.ts",
+    "build": "tsc --project tsconfig.build.json",
     "test": "mocha --require @swc-node/register --extensions ts --watch --watch-files src 'tests/**/*.ts'",
-    "testci": "mocha --require @swc-node/register --extensions ts 'tests/**/*.ts'"
+    "testci": "mocha --require @swc-node/register --extensions ts 'tests/**/*.ts'",
+    "webhook": "node -r @swc-node/register create_webhook.ts"
   },
   "dependencies": {
     "@napi-rs/canvas": "^0.1.30",
@@ -12,6 +12,8 @@
     "dotenv": "^16.0.2",
     "envalid": "^7.3.1",
     "mathjax-full": "^3.2.2",
+    "serverless-http": "^3.0.2",
+    "twict": "^0.0.8",
     "twitter-api-v2": "^1.12.7"
   },
   "devDependencies": {
