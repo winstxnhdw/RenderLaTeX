@@ -1,15 +1,14 @@
 import render_webp_latex from '@/render'
-import { commands } from './bot'
+import { commands } from '@/bot'
 import { twitter_client, twitter_activity } from '@/libs/Twitter/index'
 import { isExpectEventType } from 'twict'
 import serverless from 'serverless-http'
 
 twitter_activity.onEvent((event) => {
-  if (isExpectEventType(event, 'tweet_create_events')) {
-    for (const tweet_create_event of event.tweet_create_events) {
-      if (!validate_tweet(tweet_create_event.text)) continue
-      handle_mentions(tweet_create_event.id_str)
-    }
+  if (!isExpectEventType(event, 'tweet_create_events')) return
+  for (const tweet_create_event of event.tweet_create_events) {
+    if (!validate_tweet(tweet_create_event.text)) continue
+    handle_mentions(tweet_create_event.id_str)
   }
 })
 
