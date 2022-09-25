@@ -11,15 +11,18 @@ export default class ScalableVectorObject {
   }
 
   private get attributes(): LiteAttributeList {
-    return (this.node.children[0] as LiteElement).attributes
+    const lite_element: LiteElement = this.node.children[0]
+    return lite_element.attributes
   }
 
   get width(): number {
-    return Number(this.attributes['width'])
+    const width = this.attributes['width']
+    return Number(width)
   }
 
   get height(): number {
-    return Number(this.attributes['height'])
+    const height = this.attributes['height']
+    return Number(height)
   }
 
   set_resolution(resolution: { width: number; height: number }) {
