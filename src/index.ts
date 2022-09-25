@@ -6,6 +6,7 @@ import serverless from 'serverless-http'
 
 twitter_activity.onEvent((event) => {
   if (!isExpectEventType(event, 'tweet_create_events')) return
+  
   for (const tweet_create_event of event.tweet_create_events) {
     if (!validate_tweet(tweet_create_event.text)) continue
     handle_mentions(tweet_create_event.id_str)
