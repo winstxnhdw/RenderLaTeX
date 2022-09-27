@@ -1,7 +1,7 @@
 import { Activity, isExpectEventType } from 'twict'
 import type { ActivityEventType, ActivityEventMap, Auth } from 'twict'
 
-export default class TwitterActivity {
+export class TwitterActivity {
   private readonly activity: Activity
 
   constructor(environment_label: string, tokens: Auth) {

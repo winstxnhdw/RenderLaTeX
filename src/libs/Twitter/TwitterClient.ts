@@ -5,7 +5,7 @@ type MediaOptions = {
   mimeType: string
 }
 
-export default class TwitterClient {
+export class TwitterClient {
   private readonly client_v1: TwitterApiv1
   private readonly client_v2: TwitterApiv2
 

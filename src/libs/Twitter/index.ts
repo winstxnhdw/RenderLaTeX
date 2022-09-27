@@ -1,6 +1,6 @@
-import config from '@/config'
-import TwitterActivity from '@/libs/Twitter/TwitterActivity'
-import TwitterClient from '@/libs/Twitter/TwitterClient'
+import { config } from '@/config'
+import { TwitterActivity } from '@/libs/Twitter/TwitterActivity'
+import { TwitterClient } from '@/libs/Twitter/TwitterClient'
 
 export const twitter_activity = new TwitterActivity(config.TWITTER_ENVIRONMENT_LABEL, {
   consumerKey: config.TWITTER_API_KEY,

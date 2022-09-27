@@ -1,4 +1,4 @@
-import render_webp_latex from '@/render/index'
+import { render_webp_latex } from '@/render/index'
 import { writeFile, unlink } from 'fs'
 import { expect } from 'chai'
 

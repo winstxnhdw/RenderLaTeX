@@ -1,6 +1,6 @@
 import type { Canvas } from '@napi-rs/canvas'
 
-export default class Drawing {
+export class Drawing {
   private readonly canvas: Canvas
 
   constructor(canvas: Canvas) {

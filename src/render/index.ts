@@ -1,18 +1,18 @@
-import Canvas2D from '@/libs/Canvas/Canvas2D'
-import MathJaxSVG from '@/libs/MathJax/MathJaxSVG'
+import { Canvas2D } from '@/libs/Canvas/Canvas2D'
+import { MathJaxSVG } from '@/libs/MathJax/MathJaxSVG'
 import type { Resolution } from '@/types'
 
 const full_media_resolution: Resolution = { width: 1200, height: 675 }
 const padding = 0.1
 
-function mathjax_to_svg(mathjax_input: string, resolution: Resolution): MathJaxSVG {
+const mathjax_to_svg = (mathjax_input: string, resolution: Resolution): MathJaxSVG => {
   const mathjax_svg = new MathJaxSVG(mathjax_input)
   mathjax_svg.set_resolution(resolution)
 
   return mathjax_svg
 }
 
-function svg_to_webp(svg: MathJaxSVG): Buffer {
+const svg_to_webp = (svg: MathJaxSVG): Buffer => {
   const canvas = new Canvas2D(full_media_resolution)
   const offset_x = 0.5 * (canvas.width - svg.width)
   const offset_y = 0.5 * (canvas.height - svg.height)
@@ -20,7 +20,7 @@ function svg_to_webp(svg: MathJaxSVG): Buffer {
   return canvas.draw(svg.to_buffer(), offset_x, offset_y).to_webp()
 }
 
-export default function render_webp_latex(mathjax: string): Buffer {
+export const render_webp_latex = (mathjax: string): Buffer => {
   const svg_object = mathjax_to_svg(mathjax, {
     width: (1 - padding) * full_media_resolution.width,
     height: (1 - padding) * full_media_resolution.height

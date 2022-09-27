@@ -1,11 +1,11 @@
-import Drawing from '@/libs/Canvas/Drawing'
+import { Drawing } from '@/libs/Canvas/Drawing'
 import { createCanvas, Image } from '@napi-rs/canvas'
 import type { Canvas, SKRSContext2D } from '@napi-rs/canvas'
 import type { Resolution } from '@/types'
 
 const image = new Image()
 
-export default class Canvas2D {
+export class Canvas2D {
   private readonly canvas: Canvas
   private readonly context: SKRSContext2D
 

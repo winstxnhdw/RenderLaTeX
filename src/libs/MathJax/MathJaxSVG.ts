@@ -15,7 +15,7 @@ const mathjax_document = mathjax.document('', {
   OutputJax: new SVG({ fontCache: 'local' })
 })
 
-export default class MathJaxSVG {
+export class MathJaxSVG {
   private readonly node: LiteElement
 
   constructor(mathjax_input: string) {
