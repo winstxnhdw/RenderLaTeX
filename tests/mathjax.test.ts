@@ -1,4 +1,4 @@
-import { MathJaxSVG } from '@/libs/MathJax/MathJaxSVG'
+import { MathJaxSVG } from '@/libs/MathJax'
 import { expect } from 'chai'
 
 describe('mathjax_to_svg', () => {

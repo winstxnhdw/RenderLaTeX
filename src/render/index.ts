@@ -1,5 +1,5 @@
-import { Canvas2D } from '@/libs/Canvas/Canvas2D'
-import { MathJaxSVG } from '@/libs/MathJax/MathJaxSVG'
+import { Canvas2D } from '@/libs/Canvas'
+import { MathJaxSVG } from '@/libs/MathJax'
 import type { Resolution } from '@/types'
 
 const full_media_resolution: Resolution = { width: 1200, height: 675 }
