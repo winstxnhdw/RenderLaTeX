@@ -1,7 +1,7 @@
-import mathjax_to_svg from '@/libs/MathJax'
+import MathJaxSVG from '@/libs/MathJax/MathJaxSVG'
 import { expect } from 'chai'
 
 describe('mathjax_to_svg', () => {
   it('It should return a valid SVG when given a valid string', () =>
-    expect(mathjax_to_svg('x').to_string()).to.match(/^<svg/))
+    expect(new MathJaxSVG('x').to_string()).to.match(/^<svg/))
 })
