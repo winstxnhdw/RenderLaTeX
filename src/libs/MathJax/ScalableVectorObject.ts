@@ -3,8 +3,8 @@ import type { LiteAdaptor } from 'mathjax-full/js/adaptors/liteAdaptor'
 import type { Resolution } from '@/types'
 
 export default class ScalableVectorObject {
-  private node: LiteElement
-  private adaptor: LiteAdaptor
+  private readonly node: LiteElement
+  private readonly adaptor: LiteAdaptor
 
   constructor(node: LiteElement, adaptor: LiteAdaptor) {
     this.node = node
