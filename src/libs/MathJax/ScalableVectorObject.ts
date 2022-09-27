@@ -1,9 +1,10 @@
 import type { LiteElement, LiteAttributeList } from 'mathjax-full/js/adaptors/lite/Element'
 import type { LiteAdaptor } from 'mathjax-full/js/adaptors/liteAdaptor'
+import type { Resolution } from '@/types'
 
 export default class ScalableVectorObject {
-  node: LiteElement
-  adaptor: LiteAdaptor
+  private node: LiteElement
+  private adaptor: LiteAdaptor
 
   constructor(node: LiteElement, adaptor: LiteAdaptor) {
     this.node = node
@@ -11,7 +12,7 @@ export default class ScalableVectorObject {
   }
 
   private get attributes(): LiteAttributeList {
-    const lite_element: LiteElement = this.node.children[0]
+    const lite_element = this.node.children[0] as LiteElement
     return lite_element.attributes
   }
 
@@ -25,7 +26,7 @@ export default class ScalableVectorObject {
     return Number(height)
   }
 
-  set_resolution(resolution: { width: number; height: number }) {
+  set_resolution(resolution: Resolution) {
     this.attributes['width'] = resolution.width.toString()
     this.attributes['height'] = resolution.height.toString()
   }

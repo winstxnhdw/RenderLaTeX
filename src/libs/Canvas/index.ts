@@ -1,10 +1,6 @@
 import { createCanvas, Image } from '@napi-rs/canvas'
 import type ScalableVectorObject from '@/libs/MathJax/ScalableVectorObject'
-
-type Resolution = {
-  width: number
-  height: number
-}
+import type { Resolution } from '@/types'
 
 type VectorToCanvasOptions = {
   svg: Resolution
