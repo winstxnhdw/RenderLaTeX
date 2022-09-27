@@ -1,5 +1,5 @@
-import 'dotenv/config'
 import { cleanEnv, str } from 'envalid'
+import 'dotenv/config'
 
 export default cleanEnv(process.env, {
   TWITTER_API_KEY: str(),
