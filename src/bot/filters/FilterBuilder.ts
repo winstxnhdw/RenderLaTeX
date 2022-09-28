@@ -1,4 +1,3 @@
-import { Filter } from '@/bot/filters/Filter'
 import type { FilterAction } from '@/types/FilterAction'
 
 export class FilterBuilder<T> {
@@ -8,11 +7,20 @@ export class FilterBuilder<T> {
     this.filters = []
   }
 
-  add(filter: FilterAction<T>) {
+  add(filter: FilterAction<T>): FilterBuilder<T> {
     this.filters.push(filter)
+    return this
   }
 
-  compile(): Filter<T> {
-    return new Filter(this.filters)
+  validate(input: T): Boolean {
+    if (this.filters.length === 0) throw new Error('No filters have been added to the filter builder.')
+
+    for (const filter of this.filters) {
+      if (filter(input)) continue
+      return false
+    }
+
+    // input is valid when all filters return true
+    return true
   }
 }
