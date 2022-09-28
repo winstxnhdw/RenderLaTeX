@@ -1,4 +1,4 @@
-import type { FilterAction } from '@/types/FilterAction'
+type FilterAction<T> = (input: T) => Boolean
 
 export class FilterBuilder<T> {
   private readonly filters: Array<FilterAction<T>>
