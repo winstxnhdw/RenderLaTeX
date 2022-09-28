@@ -1,23 +1,14 @@
 import { twitter_client } from '@/libs/Twitter'
 import { reply_with_latex } from '@/bot/features'
+import { commands } from '@/bot/commands'
+import { validate_mentions } from '@/bot/filters'
 import type { TweetCreateEvents } from 'twict'
-
-const commands = {
-  render: 'render'
-}
 
 export const handle_tweet_create_events = async (event: TweetCreateEvents) => {
   for (const tweet_create_event of event.tweet_create_events) {
-    if (!validate_tweet(tweet_create_event.text)) continue
+    if (!validate_mentions(tweet_create_event.text)) continue
     handle_mentions(tweet_create_event.id_str)
   }
-}
-
-const validate_tweet = async (tweet: string) => {
-  if (tweet.startsWith('RT')) return false
-  if (tweet.indexOf(commands.render) === -1) return false
-  if (!tweet.slice(tweet.indexOf(' ') + 1).startsWith(commands.render)) return false
-  return true
 }
 
 const handle_mentions = async (in_reply_to_status_id: string) => {

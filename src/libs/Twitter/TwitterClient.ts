@@ -1,5 +1,5 @@
-import TwitterApi, { TwitterApiv1, TwitterApiv2 } from 'twitter-api-v2'
-import type { SendTweetV2Params, TwitterApiTokens } from 'twitter-api-v2'
+import TwitterApi from 'twitter-api-v2'
+import type { SendTweetV2Params, TwitterApiTokens, TwitterApiv1, TwitterApiv2 } from 'twitter-api-v2'
 
 type MediaOptions = {
   mimeType: string
