@@ -1,6 +1,7 @@
 import { twitter_client } from '@/libs/Twitter'
 import { reply_with_latex } from '@/bot/features'
 import { Command } from '@/bot/commands/Command'
+export { get_command_input } from '@/bot/commands/get_command_input'
 
 const render = async (tweet: string, in_reply_to_status_id: string) => {
   if (!tweet) {
