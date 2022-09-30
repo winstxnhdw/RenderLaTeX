@@ -10,7 +10,7 @@ export class TwitterActivity {
 
   async init_serverless_app(webhook_endpoint: string) {
     const app = await this.activity.listen(8000)
-    app.close()
+    // app.close()
 
     await this.activity.deleteAllWebhooks()
     await this.activity.registerWebhook(webhook_endpoint)

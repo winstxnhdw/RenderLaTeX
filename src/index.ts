@@ -1,5 +1,9 @@
 import { start } from '@/bot'
 import serverless from 'serverless-http'
 
-const app = await start('https://3a22-116-86-178-191.ngrok.io')
-export const handler = serverless(app)
+async function main() {
+  return await start('https://c37b-116-86-178-191.ngrok.io')
+}
+
+main()
+// export const handler = serverless(main())
