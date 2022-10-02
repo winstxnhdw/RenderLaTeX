@@ -20,7 +20,6 @@ async function main(args) {
     bundle: true,
     minify: args.slice(2)[0] !== 'test',
     platform: 'node',
-    tsconfig: 'tsconfig.build.json',
     external: external_modules
   })
 }
