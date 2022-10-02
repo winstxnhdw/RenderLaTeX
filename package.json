@@ -5,7 +5,7 @@
     "testbuild": "node -r @swc-node/register scripts/build.ts test",
     "test": "mocha --require @swc-node/register --extensions ts --watch --watch-files src 'tests/**/*.ts'",
     "testci": "mocha --require @swc-node/register --extensions ts 'tests/**/*.ts'",
-    "oauth": "python scripts/get_bot_oauth.py"
+    "oauth": "node -r @swc-node/register scripts/get_bot_oauth.ts"
   },
   "dependencies": {
     "@napi-rs/canvas": "^0.1.30",
