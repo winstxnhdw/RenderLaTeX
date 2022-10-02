@@ -1,10 +1,11 @@
 {
   "scripts": {
     "dev": "node -r @swc-node/register src/index.ts",
-    "build": "node build.js",
-    "testbuild": "node build.js test",
+    "build": "node -r @swc-node/register scripts/build.ts",
+    "testbuild": "node -r @swc-node/register scripts/build.ts test",
     "test": "mocha --require @swc-node/register --extensions ts --watch --watch-files src 'tests/**/*.ts'",
-    "testci": "mocha --require @swc-node/register --extensions ts 'tests/**/*.ts'"
+    "testci": "mocha --require @swc-node/register --extensions ts 'tests/**/*.ts'",
+    "oauth": "python scripts/get_bot_oauth.py"
   },
   "dependencies": {
     "@napi-rs/canvas": "^0.1.30",

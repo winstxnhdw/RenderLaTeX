@@ -1,15 +1,15 @@
-const fs = require('fs/promises')
-const { build } = require('esbuild')
+import { build } from 'esbuild'
+import { rm, mkdir, cp } from 'fs/promises'
 
 const build_directory = 'dist'
 const external_modules = ['@napi-rs']
 
 async function main(args) {
-  await fs.rm(build_directory, { recursive: true })
-  await fs.mkdir(build_directory)
+  await rm(build_directory, { recursive: true, force: true })
+  await mkdir(build_directory)
 
   for (const module of external_modules) {
-    await fs.cp(`node_modules/${module}`, `${build_directory}/node_modules/${module}`, {
+    await cp(`node_modules/${module}`, `${build_directory}/node_modules/${module}`, {
       recursive: true
     })
   }
