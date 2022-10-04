@@ -35,7 +35,6 @@ export class TwitterActivity {
 
   set_event<T extends ActivityEventType>(event_type: T, action: (event: ActivityEventMap[T]) => void) {
     this.activity.onEvent((event) => {
-      console.log('test')
       if (!isExpectEventType(event, event_type)) return
       action(event)
     })
