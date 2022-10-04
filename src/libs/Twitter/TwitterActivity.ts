@@ -18,8 +18,9 @@ export class TwitterActivity {
 
   handle_post(body: string | undefined): boolean {
     if (typeof body !== 'string') return false
+
     console.log(JSON.parse(body))
-    this.handler.handle({ body })
+    this.handler.handle(JSON.parse(body))
     return true
   }
 

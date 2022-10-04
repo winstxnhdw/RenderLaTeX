@@ -1,3 +1,4 @@
+import { listen_to } from '@/bot'
 import { twitter_activity } from '@/libs/Twitter'
 import type { Handler, APIGatewayProxyResultV2, Context } from 'aws-lambda'
 
@@ -41,6 +42,8 @@ export const handler: Handler = async (event: LambdaFunctionURLEvent, _: Context
       ? { statusCode: 400, body: response }
       : { statusCode: 200, body: JSON.stringify(response) }
   }
+
+  listen_to.tweet_create_events()
 
   return twitter_activity.handle_post(event.body)
     ? { statusCode: 200, body: 'OK!' }
