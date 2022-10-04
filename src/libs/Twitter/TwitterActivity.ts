@@ -1,16 +1,19 @@
 import { Activity, isExpectEventType, WebhookHandler } from 'twict'
-import type { ActivityEventType, ActivityEventMap, Auth } from 'twict'
+import type { ActivityEventType, ActivityEventMap, Auth, CrcResponse } from 'twict'
+import type { APIGatewayProxyEventQueryStringParameters } from 'aws-lambda'
 
 export class TwitterActivity {
   private readonly activity: Activity
+  private readonly handler: WebhookHandler
 
   constructor(environment_label: string, tokens: Auth) {
     this.activity = new Activity(environment_label, tokens)
-    const handler = new WebhookHandler(tokens, this.activity)
+    this.handler = new WebhookHandler(tokens, this.activity)
   }
 
-  handle_get(request: any) {
-    console.log(request)
+  handle_crc(query_string_parameters: APIGatewayProxyEventQueryStringParameters): CrcResponse | string {
+    const crc_token = query_string_parameters['crc_token']
+    return typeof crc_token === 'string' ? this.handler.crc(crc_token) : "There is no 'crc_token' found in the request!"
   }
 
   handle_post(body: any) {

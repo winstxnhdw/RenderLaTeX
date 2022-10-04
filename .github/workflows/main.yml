@@ -11,7 +11,7 @@ jobs:
   Deploy:
     runs-on: ubuntu-latest
     env:
-      lambda_function_name: RenderLaTeX
+      LAMBDA_FUNCTION_NAME: RenderLaTeX
       TWITTER_API_KEY: ${{ secrets.TWITTER_API_KEY }}
       TWITTER_API_SECRET: ${{ secrets.TWITTER_API_SECRET }}
       TWITTER_OAUTH_TOKEN: ${{ secrets.TWITTER_OAUTH_TOKEN }}
@@ -55,11 +55,11 @@ jobs:
         run: (cd dist && zip -r ../deploy.zip .)
 
       - name: Deploy to AWS
-        run: aws lambda update-function-code --function-name $lambda_function_name --zip-file=fileb://deploy.zip
+        run: aws lambda update-function-code --function-name $LAMBDA_FUNCTION_NAME --zip-file=fileb://deploy.zip
 
       - name: Update AWS Lambda environment variables
         run: |
-          aws lambda update-function-configuration --function-name $lambda_function_name --environment "Variables={ \
+          aws lambda update-function-configuration --function-name $LAMBDA_FUNCTION_NAME --environment "Variables={ \
             TWITTER_API_KEY=$TWITTER_API_KEY, \
             TWITTER_API_SECRET=$TWITTER_API_SECRET, \
             TWITTER_OAUTH_TOKEN=$TWITTER_OAUTH_TOKEN, \
