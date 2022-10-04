@@ -2,6 +2,8 @@ import { twitter_activity } from '@/libs/Twitter'
 import type { APIGatewayProxyEvent, Handler, APIGatewayProxyResultV2, Context } from 'aws-lambda'
 
 export const handler: Handler = async (event: APIGatewayProxyEvent, _: Context): Promise<APIGatewayProxyResultV2> => {
+  console.log(event.httpMethod)
+
   if (event.httpMethod === 'GET') {
     const response = twitter_activity.handle_crc(event.queryStringParameters!)
     return typeof response === 'string'
