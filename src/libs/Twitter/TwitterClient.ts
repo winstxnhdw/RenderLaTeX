@@ -17,6 +17,7 @@ export class TwitterClient {
 
   async get_tweet_text(tweet_id: string): Promise<string> {
     const tweet_lookup_result = await this.client_v2.tweets([tweet_id])
+    console.log(tweet_lookup_result)
     const tweet = tweet_lookup_result.data[0]
     if (!tweet) throw new Error('Tweet does not exist.')
 
