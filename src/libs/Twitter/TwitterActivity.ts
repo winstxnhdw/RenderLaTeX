@@ -1,4 +1,4 @@
-import { Activity, isExpectEventType } from 'twict'
+import { Activity, isExpectEventType, WebhookHandler } from 'twict'
 import type { ActivityEventType, ActivityEventMap, Auth } from 'twict'
 
 export class TwitterActivity {
@@ -6,16 +6,15 @@ export class TwitterActivity {
 
   constructor(environment_label: string, tokens: Auth) {
     this.activity = new Activity(environment_label, tokens)
+    const handler = new WebhookHandler(tokens, this.activity)
   }
 
-  async init_serverless_app(webhook_endpoint: string) {
-    const app = await this.activity.listen(8000)
+  handle_get(request: any) {
+    console.log(request)
+  }
 
-    await this.activity.deleteAllWebhooks()
-    await this.activity.registerWebhook(webhook_endpoint)
-    await this.activity.subscribe()
-
-    return app
+  handle_post(body: any) {
+    console.log(body)
   }
 
   set_event<T extends ActivityEventType>(event_type: T, action: (event: ActivityEventMap[T]) => void) {

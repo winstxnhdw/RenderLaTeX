@@ -23,6 +23,7 @@ const response = await fetch(
 
 console.log('[*] Your OAuth tokens are:')
 const oauth_tokens = await response.text()
+
 for (const token of oauth_tokens.split('&').slice(0, 2)) {
   console.log(token)
 }

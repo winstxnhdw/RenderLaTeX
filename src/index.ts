@@ -1,9 +1,12 @@
-import { start } from '@/bot'
-import serverless from 'serverless-http'
+import { twitter_activity } from '@/libs/Twitter'
+import type { APIGatewayProxyEvent, Handler, APIGatewayProxyResultV2, Context } from 'aws-lambda'
 
-async function main() {
-  const app = await start('https://c37b-116-86-178-191.ngrok.io')
-  exports.handler = serverless(app)
+export const handler: Handler = async (event: APIGatewayProxyEvent, _: Context): Promise<APIGatewayProxyResultV2> => {
+  twitter_activity.handle_get(event)
+  // twitter_activity.handle_post(event)
+
+  return {
+    statusCode: 200,
+    body: 'OK'
+  }
 }
-
-main()
