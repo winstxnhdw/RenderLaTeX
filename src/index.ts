@@ -44,6 +44,7 @@ export const handler: Handler = async (event: LambdaFunctionURLEvent, _: Context
   }
 
   listen_to.tweet_create_events()
+  console.log(event)
   twitter_activity.handle_post(event.body)
   setTimeout(() => console.log('we are done!'), 9000)
 
