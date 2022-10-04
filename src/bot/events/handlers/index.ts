@@ -8,6 +8,7 @@ export const handle_mentions = async (in_reply_to_status_id: string) => {
     if (!tweet.slice(tweet.indexOf(' ') + 1).startsWith(command.name)) continue
 
     const filtered_tweet = get_command_input(tweet, command.name)
+    console.log('filtered_tweet: ', filtered_tweet)
     command.execute(twitter_client, filtered_tweet, in_reply_to_status_id)
     return
   }
