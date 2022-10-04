@@ -31,10 +31,10 @@ type LambdaFunctionURL = {
   isBase64Encoded: false
 }
 
-export const handler: Handler = async (event: LambdaFunctionURL, ctx: Context): Promise<APIGatewayProxyResultV2> => {
-  console.log(ctx)
+export const handler: Handler = async (event: LambdaFunctionURL, _: Context): Promise<APIGatewayProxyResultV2> => {
+  console.log(event)
   if (event.requestContext.http.method === 'GET') {
-    const response = twitter_activity.handle_crc(event.queryStringParameters!)
+    const response = twitter_activity.handle_crc(event.queryStringParameters)
     return typeof response === 'string'
       ? { statusCode: 400, body: response }
       : { statusCode: 200, body: response.response_token }
