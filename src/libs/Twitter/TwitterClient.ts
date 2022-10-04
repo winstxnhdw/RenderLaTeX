@@ -1,4 +1,4 @@
-import { TwitterApi } from 'twitter-api-v2'
+const { TwitterApi } = require('twitter-api-v2')
 import type { SendTweetV2Params, TwitterApiTokens, TwitterApiv1, TwitterApiv2 } from 'twitter-api-v2'
 
 type MediaOptions = {
@@ -18,7 +18,6 @@ export class TwitterClient {
   async get_tweet_text(tweet_id: string): Promise<string> {
     console.log(tweet_id)
     const tweet_lookup_result = await this.client_v2.tweets([tweet_id])
-    console.log('hello')
     console.log(tweet_lookup_result)
     const tweet = tweet_lookup_result.data[0]
     if (!tweet) throw new Error('Tweet does not exist.')
