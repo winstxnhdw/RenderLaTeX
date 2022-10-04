@@ -2,7 +2,7 @@
 
 ![main.yml](https://github.com/winstxnhdw/RenderLaTeX/actions/workflows/main.yml/badge.svg)
 
-[RenderLaTeX](https://twitter.com/RenderLaTeX) is an ultra responsive serverless LaTeX/MathJax render bot for Twitter. Traditionally, Twitter bots, like [@saucenaopls](https://github.com/MakotoAme/twitter-saucenao) and [@aceCourtBot2](https://github.com/LuisMayo/ace-attorney-twitter-bot) must be spun up indefinitely to poll the Twitter servers for updates. These bots are are expensive to maintain, while being slow and frustrating for their users. `RenderLaTeX` relies on [webhooks](https://developer.twitter.com/en/docs/twitter-api/premium/account-activity-api/guides/getting-started-with-webhooks) instead of polling to receive tweets, allowing near instant response at virtually no costs.
+[@RenderLaTeX](https://twitter.com/RenderLaTeX) is an ultra responsive serverless LaTeX/MathJax render bot for Twitter. Traditionally, Twitter bots, like [@saucenaopls](https://github.com/MakotoAme/twitter-saucenao) and [@aceCourtBot2](https://github.com/LuisMayo/ace-attorney-twitter-bot) must be spun up indefinitely to poll the Twitter servers for updates. These bots are are expensive to maintain, while being slow and frustrating for their users. [@RenderLaTeX](https://twitter.com/RenderLaTeX) relies on [webhooks](https://developer.twitter.com/en/docs/twitter-api/premium/account-activity-api/guides/getting-started-with-webhooks) instead of polling to receive tweets, allowing near instant response at virtually no costs.
 
 ## Setup
 
