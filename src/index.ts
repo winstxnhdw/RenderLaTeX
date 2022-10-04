@@ -1,10 +1,39 @@
 import { twitter_activity } from '@/libs/Twitter'
-import type { APIGatewayProxyEvent, Handler, APIGatewayProxyResultV2, Context } from 'aws-lambda'
+import type { Handler, APIGatewayProxyResultV2, Context, APIGatewayEvent } from 'aws-lambda'
 
-export const handler: Handler = async (event: APIGatewayProxyEvent, _: Context): Promise<APIGatewayProxyResultV2> => {
-  console.log(event.httpMethod)
+type LambdaFunctionURL = {
+  version: string
+  routeKey: string
+  rawPath: string
+  rawQueryString: string
+  headers: {
+    host: string
+  }
+  queryStringParameters: {}
+  requestContext: {
+    accountId: string
+    apiId: string
+    domainName: string
+    domainPrefix: string
+    http: {
+      method: 'GET' | 'POST'
+      path: string
+      protocol: string
+      sourceIp: string
+      userAgent: unknown
+    }
+    requestId: string
+    routeKey: string
+    stage: string
+    time: string
+    timeEpoch: number
+  }
+  isBase64Encoded: false
+}
 
-  if (event.httpMethod === 'GET') {
+export const handler: Handler = async (event: LambdaFunctionURL, ctx: Context): Promise<APIGatewayProxyResultV2> => {
+  console.log(ctx)
+  if (event.requestContext.http.method === 'GET') {
     const response = twitter_activity.handle_crc(event.queryStringParameters!)
     return typeof response === 'string'
       ? { statusCode: 400, body: response }
