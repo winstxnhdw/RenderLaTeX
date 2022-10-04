@@ -10,6 +10,16 @@ export class TwitterActivity {
     this.handler = new WebhookHandler(tokens, this.activity)
   }
 
+  get internal(): Activity {
+    return this.activity
+  }
+
+  async register_webhook(webhook_endpoint: string) {
+    await this.activity.deleteAllWebhooks()
+    await this.activity.registerWebhook(webhook_endpoint)
+    await this.activity.subscribe()
+  }
+
   handle_crc(crc_token: string | undefined): CrcResponse | string {
     return typeof crc_token === 'string'
       ? this.handler.crc(crc_token)
@@ -25,6 +35,7 @@ export class TwitterActivity {
 
   set_event<T extends ActivityEventType>(event_type: T, action: (event: ActivityEventMap[T]) => void) {
     this.activity.onEvent((event) => {
+      console.log('test')
       if (!isExpectEventType(event, event_type)) return
       action(event)
     })
