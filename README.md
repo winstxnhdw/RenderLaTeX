@@ -1,4 +1,4 @@
-# RenderLaTeX
+# @RenderLaTeX
 
 ![main.yml](https://github.com/winstxnhdw/RenderLaTeX/actions/workflows/main.yml/badge.svg)
 
