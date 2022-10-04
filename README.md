@@ -16,14 +16,14 @@ yarn
 
 RenderLaTeX's architecture was designed to meet the following objectives.
 
-### Available indefinitely
+### Available always
 
 RenderLaTeX should be available indefinitely without constant maintenance. This means that it should run on a cloud provider, like AWS. Points of failure are kept to a minimum as the bot is only dependent on the server it is hosted on and Twitter.
 
-### Free to maintain
+### Free forevever
 
 The project should be free to maintain forever. I do not want to spend a single cent on this project. This is why the bot uses Twitter's webhooks to receive events.
 
-### Responsive
+### Really responsive
 
 AWS Lambda has one of the fastest cold start times with a generous free tier. This means that the bot can respond to tweets as soon as the webhook request is consumed. Additionally, the bot is not reliant on API requests as its MathJax engine renders LaTeX in-house.
