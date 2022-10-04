@@ -45,9 +45,10 @@ export const handler: Handler = async (event: LambdaFunctionURLEvent, _: Context
 
   listen_to.tweet_create_events()
   twitter_activity.handle_post(event.body)
-  setTimeout(() => {}, 9000)
+  setTimeout(() => console.log('we are done!'), 9000)
 
-  return twitter_activity.handle_post(event.body)
-    ? { statusCode: 200, body: 'OK!' }
-    : { statusCode: 400, body: 'Invalid request!' }
+  return { statusCode: 200, body: 'OK!' }
+  // return twitter_activity.handle_post(event.body)
+  //   ? { statusCode: 200, body: 'OK!' }
+  //   : { statusCode: 400, body: 'Invalid request!' }
 }
