@@ -39,7 +39,7 @@ export const handler: Handler = async (event: LambdaFunctionURLEvent, _: Context
     const response = twitter_activity.handle_crc(event.queryStringParameters)
     return typeof response === 'string'
       ? { statusCode: 400, body: response }
-      : { statusCode: 200, body: response.response_token }
+      : { statusCode: 200, body: JSON.stringify(response) }
   }
 
   twitter_activity.handle_post(event)
