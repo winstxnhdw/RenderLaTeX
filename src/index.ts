@@ -1,6 +1,6 @@
 import { listen_to } from '@/bot'
 import { twitter_activity } from '@/libs/Twitter'
-import type { Handler, APIGatewayProxyResultV2, Context } from 'aws-lambda'
+import type { Handler, APIGatewayProxyResultV2 } from 'aws-lambda'
 
 type LambdaFunctionURLEvent = {
   version: string
@@ -35,7 +35,7 @@ type LambdaFunctionURLEvent = {
   isBase64Encoded: false
 }
 
-export const handler: Handler = async (event: LambdaFunctionURLEvent, _: Context): Promise<APIGatewayProxyResultV2> => {
+export const handler: Handler = async (event: LambdaFunctionURLEvent): Promise<APIGatewayProxyResultV2> => {
   if (event.requestContext.http.method === 'GET') {
     const response = twitter_activity.handle_crc(event.queryStringParameters!['crc_token'])
     return typeof response === 'string'
