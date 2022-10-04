@@ -9,7 +9,6 @@ const render = async (twitter_client: TwitterClient, tweet: string, in_reply_to_
     return
   }
 
-  console.log(tweet)
   await reply_with_latex(twitter_client, tweet, in_reply_to_status_id)
 }
 
