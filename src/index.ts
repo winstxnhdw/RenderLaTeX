@@ -1,7 +1,7 @@
 import { twitter_activity } from '@/libs/Twitter'
-import type { Handler, APIGatewayProxyResultV2, Context, APIGatewayEvent } from 'aws-lambda'
+import type { Handler, APIGatewayProxyResultV2, Context } from 'aws-lambda'
 
-type LambdaFunctionURL = {
+type LambdaFunctionURLEvent = {
   version: string
   routeKey: string
   rawPath: string
@@ -9,7 +9,7 @@ type LambdaFunctionURL = {
   headers: {
     host: string
   }
-  queryStringParameters: {}
+  queryStringParameters?: {}
   requestContext: {
     accountId: string
     apiId: string
@@ -31,9 +31,11 @@ type LambdaFunctionURL = {
   isBase64Encoded: false
 }
 
-export const handler: Handler = async (event: LambdaFunctionURL, _: Context): Promise<APIGatewayProxyResultV2> => {
-  console.log(event)
+export const handler: Handler = async (event: LambdaFunctionURLEvent, _: Context): Promise<APIGatewayProxyResultV2> => {
+  console.log(event.requestContext.http.method)
   if (event.requestContext.http.method === 'GET') {
+    if (!event.queryStringParameters) return { statusCode: 404, body: 'No query found.' }
+
     const response = twitter_activity.handle_crc(event.queryStringParameters)
     return typeof response === 'string'
       ? { statusCode: 400, body: response }
