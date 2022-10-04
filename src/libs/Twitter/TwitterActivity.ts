@@ -1,5 +1,5 @@
 import { Activity, isExpectEventType, WebhookHandler } from 'twict'
-import type { ActivityEventType, ActivityEventMap, Auth, CrcResponse } from 'twict'
+import type { ActivityEventType, ActivityEvent, ActivityEventMap, Auth, CrcResponse } from 'twict'
 import type { APIGatewayProxyEventQueryStringParameters } from 'aws-lambda'
 
 export class TwitterActivity {
@@ -11,13 +11,17 @@ export class TwitterActivity {
     this.handler = new WebhookHandler(tokens, this.activity)
   }
 
-  handle_crc(query_string_parameters: APIGatewayProxyEventQueryStringParameters): CrcResponse | string {
-    const crc_token = query_string_parameters['crc_token']
-    return typeof crc_token === 'string' ? this.handler.crc(crc_token) : "There is no 'crc_token' found in the request!"
+  handle_crc(crc_token: string | undefined): CrcResponse | string {
+    return typeof crc_token === 'string'
+      ? this.handler.crc(crc_token)
+      : "There is no 'crc_token' found in this request!"
   }
 
-  handle_post(body: any) {
-    console.log(body)
+  handle_post(body: string | undefined): boolean {
+    if (typeof body !== 'string') return false
+
+    this.handler.handle(JSON.parse(body))
+    return true
   }
 
   set_event<T extends ActivityEventType>(event_type: T, action: (event: ActivityEventMap[T]) => void) {

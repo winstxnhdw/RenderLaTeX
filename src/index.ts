@@ -9,7 +9,9 @@ type LambdaFunctionURLEvent = {
   headers: {
     host: string
   }
-  queryStringParameters?: {}
+  queryStringParameters?: {
+    [key: string]: any
+  }
   requestContext: {
     accountId: string
     apiId: string
@@ -20,7 +22,7 @@ type LambdaFunctionURLEvent = {
       path: string
       protocol: string
       sourceIp: string
-      userAgent: unknown
+      userAgent: string | null
     }
     requestId: string
     routeKey: string
@@ -28,24 +30,19 @@ type LambdaFunctionURLEvent = {
     time: string
     timeEpoch: number
   }
+  body?: string
   isBase64Encoded: false
 }
 
 export const handler: Handler = async (event: LambdaFunctionURLEvent, _: Context): Promise<APIGatewayProxyResultV2> => {
-  console.log(event.requestContext.http.method)
   if (event.requestContext.http.method === 'GET') {
-    if (!event.queryStringParameters) return { statusCode: 404, body: 'No query found.' }
-
-    const response = twitter_activity.handle_crc(event.queryStringParameters)
+    const response = twitter_activity.handle_crc(event.queryStringParameters!['crc_token'])
     return typeof response === 'string'
       ? { statusCode: 400, body: response }
       : { statusCode: 200, body: JSON.stringify(response) }
   }
 
-  twitter_activity.handle_post(event)
-
-  return {
-    statusCode: 200,
-    body: 'OK'
-  }
+  return twitter_activity.handle_post(event.body)
+    ? { statusCode: 200, body: 'OK!' }
+    : { statusCode: 400, body: 'Invalid request!' }
 }
