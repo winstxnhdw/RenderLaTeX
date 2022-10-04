@@ -34,9 +34,9 @@ export class TwitterActivity {
   }
 
   set_event<T extends ActivityEventType>(event_type: T, action: (event: ActivityEventMap[T]) => Promise<void>) {
-    this.activity.onEvent(async (event) => {
+    this.activity.onEvent((event) => {
       if (!isExpectEventType(event, event_type)) return
-      await action(event)
+      action(event).then(() => console.log(`Event '${event_type}' handled.`))
     })
   }
 }
