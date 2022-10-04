@@ -1,6 +1,5 @@
 import { Activity, isExpectEventType, WebhookHandler } from 'twict'
-import type { ActivityEventType, ActivityEvent, ActivityEventMap, Auth, CrcResponse } from 'twict'
-import type { APIGatewayProxyEventQueryStringParameters } from 'aws-lambda'
+import type { ActivityEventType, ActivityEventMap, Auth, CrcResponse } from 'twict'
 
 export class TwitterActivity {
   private readonly activity: Activity
@@ -19,8 +18,8 @@ export class TwitterActivity {
 
   handle_post(body: string | undefined): boolean {
     if (typeof body !== 'string') return false
-    console.log(body)
-    this.handler.handle(JSON.parse(body))
+    console.log(JSON.parse(body))
+    this.handler.handle({ body })
     return true
   }
 
