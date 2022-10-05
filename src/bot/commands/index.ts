@@ -11,10 +11,8 @@ const render = async (twitter_client: TwitterClient, tweet: TweetWithInput) => {
   console.log(tweet)
 
   if (tweet.input) await reply_with_latex(twitter_client, tweet.input, tweet.id)
-
-  if (tweet.public_metrics?.reply_count !== 0) {
+  else if (tweet.public_metrics?.reply_count !== 0) {
     await twitter_client.reply('You have not provided any valid LaTeX.', tweet.id)
-    return
   }
 
   console.log(tweet)
