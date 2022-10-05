@@ -4,7 +4,7 @@ import { get_command_input } from '@/bot/commands/helpers'
 
 export const handle_mentions = async (tweet_id: string) => {
   const tweet = await twitter_client.get_tweet(tweet_id)
-  console.log(tweet)
+
   for (const command of Object.values(commands)) {
     if (!tweet.text.slice(tweet.text.indexOf(' ') + 1).startsWith(command.name)) continue
 
