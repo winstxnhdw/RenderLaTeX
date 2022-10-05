@@ -8,6 +8,8 @@ type TweetWithInput = TweetV2 & {
 }
 
 const render = async (twitter_client: TwitterClient, tweet: TweetWithInput) => {
+  console.log(tweet)
+
   if (tweet.input) await reply_with_latex(twitter_client, tweet.input, tweet.id)
 
   if (tweet.public_metrics?.reply_count !== 0) {
