@@ -6,13 +6,18 @@ type MediaOptions = {
 }
 
 export class TwitterClient {
+  private readonly client: TwitterApi
   private readonly client_v1: TwitterApiv1
   private readonly client_v2: TwitterApiv2
 
   constructor(tokens: TwitterApiTokens) {
-    const client = new TwitterApi(tokens)
-    this.client_v1 = client.v1
-    this.client_v2 = client.v2
+    this.client = new TwitterApi(tokens)
+    this.client_v1 = this.client.v1
+    this.client_v2 = this.client.v2
+  }
+
+  get internal() {
+    return this.client
   }
 
   async get_tweet_text(tweet_id: string): Promise<string> {
