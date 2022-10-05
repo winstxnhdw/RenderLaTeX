@@ -1,5 +1,5 @@
 import { listen_to } from '@/bot'
-import { twitter_activity, twitter_client } from '@/libs/Twitter'
+import { twitter_activity } from '@/libs/Twitter'
 import type { Handler, APIGatewayProxyResultV2 } from 'aws-lambda'
 
 type LambdaFunctionURLEvent = {
@@ -35,6 +35,8 @@ type LambdaFunctionURLEvent = {
   isBase64Encoded: false
 }
 
+listen_to.tweet_create_events()
+
 export const handler: Handler = async (event: LambdaFunctionURLEvent): Promise<APIGatewayProxyResultV2> => {
   if (event.requestContext.http.method === 'GET') {
     const response = twitter_activity.handle_crc(event.queryStringParameters!['crc_token'])
@@ -42,8 +44,6 @@ export const handler: Handler = async (event: LambdaFunctionURLEvent): Promise<A
       ? { statusCode: 400, body: response }
       : { statusCode: 200, body: JSON.stringify(response) }
   }
-
-  listen_to.tweet_create_events()
 
   return (await twitter_activity.handle_post(event.body))
     ? { statusCode: 200, body: 'OK!' }
