@@ -44,9 +44,8 @@ export const handler: Handler = async (event: LambdaFunctionURLEvent): Promise<A
   }
 
   listen_to.tweet_create_events()
-  await twitter_client.internal.v2.tweet('Hello world')
 
-  return twitter_activity.handle_post(event.body)
+  return (await twitter_activity.handle_post(event.body))
     ? { statusCode: 200, body: 'OK!' }
     : { statusCode: 400, body: 'Invalid request!' }
 }

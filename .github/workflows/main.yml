@@ -28,6 +28,8 @@ jobs:
           aws-region: ap-southeast-1
 
       - uses: actions/checkout@v3
+        with:
+          submodules: recursive
 
       - name: Setup Node.js
         uses: actions/setup-node@v3

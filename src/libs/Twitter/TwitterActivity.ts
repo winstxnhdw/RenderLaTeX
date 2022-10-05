@@ -1,13 +1,13 @@
-import { Activity, isExpectEventType, WebhookHandler } from 'twict'
-import type { ActivityEventType, ActivityEventMap, Auth, CrcResponse } from 'twict'
+import { Activity } from 'webhoot'
+import type { WebhookHandlable, Auth, CrcResponse } from 'webhoot'
 
 export class TwitterActivity {
   private readonly activity: Activity
-  private readonly handler: WebhookHandler
+  private readonly handler: WebhookHandlable
 
   constructor(environment_label: string, tokens: Auth) {
     this.activity = new Activity(environment_label, tokens)
-    this.handler = new WebhookHandler(tokens, this.activity)
+    this.handler = this.activity.getHandler()
   }
 
   get internal(): Activity {
@@ -21,22 +21,13 @@ export class TwitterActivity {
   }
 
   handle_crc(crc_token: string | undefined): CrcResponse | string {
-    return typeof crc_token === 'string'
-      ? this.handler.crc(crc_token)
-      : "There is no 'crc_token' found in this request!"
+    return this.handler.handle_crc(crc_token)
   }
 
-  handle_post(body: string | undefined): boolean {
+  async handle_post(body: string | undefined): Promise<boolean> {
     if (typeof body !== 'string') return false
 
-    this.handler.handle(JSON.parse(body))
+    await this.handler.handle_post(JSON.parse(body))
     return true
-  }
-
-  set_event<T extends ActivityEventType>(event_type: T, action: (event: ActivityEventMap[T]) => Promise<void>) {
-    this.activity.onEvent((event) => {
-      if (!isExpectEventType(event, event_type)) return
-      action(event).then(() => console.log(`Event '${event_type}' handled.`))
-    })
   }
 }
