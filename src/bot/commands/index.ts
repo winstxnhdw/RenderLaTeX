@@ -1,15 +1,22 @@
 import { reply_with_latex } from '@/bot/features'
 import { Command } from '@/bot/commands/Command'
 import type { TwitterClient } from '@/libs/Twitter/TwitterClient'
-export { get_command_input } from '@/bot/commands/get_command_input'
+import type { TweetV2 } from 'twitter-api-v2'
 
-const render = async (twitter_client: TwitterClient, tweet: string, in_reply_to_status_id: string) => {
-  if (!tweet) {
-    await twitter_client.reply('You have not provided any valid LaTeX.', in_reply_to_status_id)
+type TweetWithInput = TweetV2 & {
+  input: string
+}
+
+const render = async (twitter_client: TwitterClient, tweet: TweetWithInput) => {
+  if (tweet.input) await reply_with_latex(twitter_client, tweet.input, tweet.id)
+
+  if (tweet.public_metrics?.reply_count !== 0) {
+    await twitter_client.reply('You have not provided any valid LaTeX.', tweet.id)
     return
   }
 
-  await reply_with_latex(twitter_client, tweet, in_reply_to_status_id)
+  console.log(tweet)
+  // await twitter_client.get_tweet(tweet.in_reply_to_sta)
 }
 
 export const commands = {

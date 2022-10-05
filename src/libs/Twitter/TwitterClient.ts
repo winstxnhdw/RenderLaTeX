@@ -1,5 +1,5 @@
 import { TwitterApi } from 'twitter-api-v2'
-import type { SendTweetV2Params, TwitterApiTokens, TwitterApiv1, TwitterApiv2 } from 'twitter-api-v2'
+import type { SendTweetV2Params, TwitterApiTokens, TwitterApiv1, TwitterApiv2, TweetV2 } from 'twitter-api-v2'
 
 type MediaOptions = {
   mimeType: string
@@ -20,12 +20,12 @@ export class TwitterClient {
     return this.client
   }
 
-  async get_tweet_text(tweet_id: string): Promise<string> {
+  async get_tweet(tweet_id: string): Promise<TweetV2> {
     const tweet_lookup_result = await this.client_v2.tweets([tweet_id])
     const tweet = tweet_lookup_result.data[0]
     if (!tweet) throw new Error('Tweet does not exist.')
 
-    return tweet.text
+    return tweet
   }
 
   async reply(text: string, in_reply_to_status_id: string, options?: Partial<SendTweetV2Params>) {

@@ -1,4 +1,4 @@
-import { get_command_input } from '@/bot/commands'
+import { get_command_input } from '@/bot/commands/helpers'
 import { expect } from 'chai'
 
 describe('get_command_input', () => {
