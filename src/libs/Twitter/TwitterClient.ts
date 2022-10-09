@@ -20,6 +20,11 @@ export class TwitterClient {
     return this.client
   }
 
+  async get_username() {
+    const me = await this.client_v2.me()
+    return me.data.username
+  }
+
   async get_tweet(tweet_id: string): Promise<TweetV1> {
     const tweet = await this.client_v1.singleTweet(tweet_id)
     if (!tweet) throw new Error('Tweet does not exist.')
