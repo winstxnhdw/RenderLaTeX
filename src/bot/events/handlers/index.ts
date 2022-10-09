@@ -8,8 +8,9 @@ export const handle_mentions = async (tweet_id: string) => {
 
   for (const command of Object.values(commands)) {
     const username = await twitter_client.get_username()
-    console.log(text.slice(text.indexOf(`@${username} `) + 1))
-    if (!text.slice(text.indexOf(`@${username} `) + 1).startsWith(command.name)) continue
+    const user_handle = `@${username}`
+    const tweet_without_handle = text.slice(text.indexOf(user_handle) + user_handle.length).trim()
+    if (!tweet_without_handle.startsWith(command.name)) continue
 
     await command.execute(twitter_client, { input: get_command_input(text, command.name), ...tweet })
     return
