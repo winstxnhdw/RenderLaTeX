@@ -7,8 +7,8 @@ export const handle_mentions = async (tweet_id: string) => {
   const text = tweet.full_text || tweet.text
 
   for (const command of Object.values(commands)) {
-    twitter_client.internal.v2.me()
-    if (!text.slice(text.indexOf(' ') + 1).startsWith(command.name)) continue
+    const username = await twitter_client.get_username()
+    if (!text.slice(text.indexOf(`@${username} `) + 1).startsWith(command.name)) continue
 
     await command.execute(twitter_client, { input: get_command_input(text, command.name), ...tweet })
     return
