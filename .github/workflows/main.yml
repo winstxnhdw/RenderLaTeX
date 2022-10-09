@@ -36,13 +36,17 @@ jobs:
         with:
           node-version: 16
           
-      # - name: 'Cache node_modules'
-      #   uses: actions/cache@v3
-      #   with:
-      #     path: ~/.npm
-      #     key: ${{ runner.os }}-node-${{ hashFiles('**/package.json') }}
-      #     restore-keys: |
-      #       ${{ runner.os }}-node-
+      - name: 'Cache node_modules'
+        uses: actions/cache@v3
+        env:
+          CACHE_NAME: cache_node_modules
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.CACHE_NAME }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.CACHE_NAME }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
 
       - name: Install node dependencies
         run: yarn --frozen-lockfile
