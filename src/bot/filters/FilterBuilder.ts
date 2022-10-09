@@ -1,4 +1,10 @@
-type FilterAction<T> = (input: T) => Boolean
+type FilterAction<T> = (input: T) => boolean
+
+class NoFilterError extends Error {
+  constructor(message = 'No filter(s) has been added to the filter builder') {
+    super(message)
+  }
+}
 
 export class FilterBuilder<T> {
   private readonly filters: Array<FilterAction<T>>
@@ -12,12 +18,11 @@ export class FilterBuilder<T> {
     return this
   }
 
-  validate(input: T): Boolean {
-    if (this.filters.length === 0) throw new Error('No filters have been added to the filter builder.')
+  validate(input: T): boolean {
+    if (this.filters.length === 0) throw new NoFilterError()
 
     for (const filter of this.filters) {
-      if (filter(input)) continue
-      return false
+      if (!filter(input)) return false
     }
 
     // input is valid when all filters return true

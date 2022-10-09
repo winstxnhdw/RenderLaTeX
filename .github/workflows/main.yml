@@ -6,6 +6,7 @@ on:
       - 'src/**'
       - 'tests/**'
       - '.github/workflows/main.yml'
+      - 'package.json'
 
 jobs:
   Deploy:
@@ -35,17 +36,24 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16
-          
-      # - name: 'Cache node_modules'
-      #   uses: actions/cache@v3
-      #   with:
-      #     path: ~/.npm
-      #     key: ${{ runner.os }}-node-${{ hashFiles('**/package.json') }}
-      #     restore-keys: |
-      #       ${{ runner.os }}-node-
+
+      - name: 'Cache node_modules'
+        uses: actions/cache@v3
+        env:
+          CACHE_NAME: cache-node-modules
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.CACHE_NAME }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.CACHE_NAME }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
 
       - name: Install node dependencies
         run: yarn --frozen-lockfile
+
+      - name: Run linter
+        run: yarn lint
 
       - name: Run tests
         run: yarn testci
@@ -72,4 +80,3 @@ jobs:
 
       - name: Register the webhook
         run: yarn webhook
-        

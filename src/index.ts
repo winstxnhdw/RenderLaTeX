@@ -11,7 +11,7 @@ type LambdaFunctionURLEvent = {
     host: string
   }
   queryStringParameters?: {
-    [key: string]: any
+    [key: string]: unknown
   }
   requestContext: {
     accountId: string
@@ -39,7 +39,7 @@ listen_to.tweet_create_events()
 
 export const handler: Handler = async (event: LambdaFunctionURLEvent): Promise<APIGatewayProxyResultV2> => {
   if (event.requestContext.http.method === 'GET') {
-    const response = twitter_activity.handle_crc(event.queryStringParameters!['crc_token'])
+    const response = twitter_activity.handle_crc(event.queryStringParameters?.['crc_token'] as string)
     return typeof response === 'string'
       ? { statusCode: 400, body: response }
       : { statusCode: 200, body: JSON.stringify(response) }

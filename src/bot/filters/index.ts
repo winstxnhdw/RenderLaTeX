@@ -1,10 +1,9 @@
 import { illegal_words } from '@/bot/filters/banned_words'
-import { commands } from '@/bot/commands'
 import { FilterBuilder } from '@/bot/filters/FilterBuilder'
 
-const ignore_retweets = (tweet: string): Boolean => !tweet.startsWith('RT')
+const ignore_retweets = (tweet: string): boolean => !tweet.startsWith('RT')
 
-const ignore_tweets_with_illegal_words = (tweet: string): Boolean => {
+const ignore_tweets_with_illegal_words = (tweet: string): boolean => {
   for (const word of illegal_words) {
     if (!tweet.includes(word)) continue
     return false
@@ -13,7 +12,7 @@ const ignore_tweets_with_illegal_words = (tweet: string): Boolean => {
   return true
 }
 
-export const validate_mentions = (tweet: string): Boolean => {
+export const validate_mentions = (tweet: string): boolean => {
   const filter_builder = new FilterBuilder<string>()
   filter_builder.add(ignore_tweets_with_illegal_words)
   filter_builder.add(ignore_retweets)

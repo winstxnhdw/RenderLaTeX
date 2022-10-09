@@ -22,7 +22,7 @@ export class Canvas2D {
     return this.canvas.height
   }
 
-  draw(buffer: Buffer, offset_x: number = 0, offset_y: number = 0): Drawing {
+  draw(buffer: Buffer, offset_x = 0, offset_y = 0): Drawing {
     image.src = buffer
     this.context.drawImage(image, offset_x, offset_y)
 
