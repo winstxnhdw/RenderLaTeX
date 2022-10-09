@@ -1,5 +1,4 @@
 import { illegal_words } from '@/bot/filters/banned_words'
-import { commands } from '@/bot/commands'
 import { FilterBuilder } from '@/bot/filters/FilterBuilder'
 
 const ignore_retweets = (tweet: string): Boolean => !tweet.startsWith('RT')
