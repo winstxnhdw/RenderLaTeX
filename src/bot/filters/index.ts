@@ -13,21 +13,10 @@ const ignore_tweets_with_illegal_words = (tweet: string): Boolean => {
   return true
 }
 
-const ignore_tweets_without_commands = (tweet: string): Boolean => {
-  for (const command of Object.values(commands)) {
-    if (!tweet.slice(tweet.indexOf(' ') + 1).startsWith(command.name)) continue
-    return true
-  }
-
-  return false
-}
-
 export const validate_mentions = (tweet: string): Boolean => {
-  console.log(tweet)
   const filter_builder = new FilterBuilder<string>()
   filter_builder.add(ignore_tweets_with_illegal_words)
   filter_builder.add(ignore_retweets)
-  filter_builder.add(ignore_tweets_without_commands)
 
   return filter_builder.validate(tweet)
 }
