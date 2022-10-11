@@ -5,6 +5,12 @@ type MediaOptions = {
   mimeType: string
 }
 
+class TweetNotFound extends Error {
+  constructor(tweet_id: string | number) {
+    super(`Tweet ${tweet_id} does not exist.`)
+  }
+}
+
 export class TwitterClient {
   private readonly client: TwitterApi
   private readonly client_v1: TwitterApiv1
@@ -27,7 +33,7 @@ export class TwitterClient {
 
   async get_tweet(tweet_id: string): Promise<TweetV1> {
     const tweet = await this.client_v1.singleTweet(tweet_id)
-    if (!tweet) throw new Error('Tweet does not exist.')
+    if (!tweet) throw new TweetNotFound(tweet_id)
 
     return tweet
   }
