@@ -1952,10 +1952,10 @@ verror@1.10.0:
     core-util-is "1.0.2"
     extsprintf "^1.2.0"
 
-webhoot@^0.0.4:
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/webhoot/-/webhoot-0.0.4.tgz#2576393e2d719dc3b65d4306c602a1bbe45eaa2f"
-  integrity sha512-xlI4COrR6Oc3rKeAWsetILn5HJgX6ImfhvDe61rgsp9SJ7LBNrQI5OPmjbfz9q2Vx72wYzXuINSWO1UCCDmopQ==
+webhoot@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/webhoot/-/webhoot-0.0.5.tgz#4f0f43f29226cedc5b8cce7b1b5e46197472ad09"
+  integrity sha512-ZKm3wKufyEEwNgU5/D1fY2dR4m6wLBw8WwZ3ArTfJNNPloq/kPuGMXYTkdRzMxKdFfB4kSVGbQQagwswznIzQg==
   dependencies:
     axios "^1.1.2"
     request-promise "^4.2.6"

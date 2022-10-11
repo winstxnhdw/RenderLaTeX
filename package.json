@@ -15,7 +15,7 @@
     "envalid": "^7.3.1",
     "mathjax-full": "^3.2.2",
     "twitter-api-v2": "^1.12.8",
-    "webhoot": "^0.0.4"
+    "webhoot": "^0.0.5"
   },
   "devDependencies": {
     "@swc-node/register": "^1.5.4",
