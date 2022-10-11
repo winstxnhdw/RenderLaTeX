@@ -1,4 +1,4 @@
-type FilterAction<T> = (input: T) => Boolean
+type FilterAction<T> = (input: T) => boolean
 
 export class FilterBuilder<T> {
   private readonly filters: Array<FilterAction<T>>
@@ -12,7 +12,7 @@ export class FilterBuilder<T> {
     return this
   }
 
-  validate(input: T): Boolean {
+  validate(input: T): boolean {
     if (this.filters.length === 0) throw new Error('No filters have been added to the filter builder.')
 
     for (const filter of this.filters) {
