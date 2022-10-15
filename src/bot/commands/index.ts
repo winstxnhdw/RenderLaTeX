@@ -13,7 +13,7 @@ const render = async (twitter_client: TwitterClient, tweet: TweetWithInput) => {
   if (tweet.input) {
     await reply_with_latex(twitter_client, tweet.input, tweet.id_str)
   } else if (tweet.reply_count === 0) {
-    await twitter_client.reply('You have not provided any valid LaTeX.', tweet.id_str)
+    await twitter_client.reply('Hi, I am a Twitter bot that renders LaTeX. To use me correctly, please check out my pinned tweet!', tweet.id_str)
   } else {
     const replied_tweet = await twitter_client.get_tweet(tweet.in_reply_to_status_id_str as string)
     const filtered_tweet = remove_mentions(replied_tweet.full_text || replied_tweet.text)

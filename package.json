@@ -4,8 +4,8 @@
     "dev": "node -r @swc-node/register src/index.ts",
     "build": "node -r @swc-node/register scripts/build.ts",
     "testbuild": "node -r @swc-node/register scripts/build.ts test",
-    "test": "mocha --require @swc-node/register --extensions ts --watch --watch-files src 'tests/**/*.ts'",
-    "testci": "mocha --require @swc-node/register --extensions ts 'tests/**/*.ts'",
+    "test": "mocha --require @swc-node/register --extensions ts --watch --watch-files src 'tests/**/*.test.ts'",
+    "testci": "mocha --require @swc-node/register --extensions ts 'tests/**/*.test.ts'",
     "oauth": "node -r @swc-node/register scripts/get_bot_oauth.ts",
     "webhook": "node -r @swc-node/register scripts/register_webhook.ts"
   },
