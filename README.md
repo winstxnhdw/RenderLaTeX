@@ -1,3 +1,7 @@
+<div align="center">
+    <img src="resources/banner.png" />
+</div>
+
 # @RenderLaTeX
 
 ![main.yml](https://github.com/winstxnhdw/RenderLaTeX/actions/workflows/main.yml/badge.svg)
@@ -27,3 +31,8 @@ The project should be free to maintain forever. I do not want to spend a single 
 ### Really responsive
 
 AWS Lambda has one of the fastest cold start times with a generous free tier. This means that the bot can respond to tweets as soon as the webhook request is consumed. Additionally, the bot is not reliant on API requests as its MathJax engine renders LaTeX in-house.
+
+## Credits
+
+Many thanks to [Alyssa](https://github.com/alyssaxchua) for the amazing Twitter banner and profile picture!
+
