@@ -1,0 +1,60 @@
+name: "CodeQL Scanning"
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    #        ┌───────────── minute (0 - 59)
+    #        │ ┌───────────── hour (0 - 23)
+    #        │ │ ┌───────────── day of the month (1 - 31)
+    #        │ │ │ ┌───────────── month (1 - 12 or JAN-DEC)
+    #        │ │ │ │ ┌───────────── day of the week (0 - 6 or SUN-SAT)
+    #        │ │ │ │ │
+    #        │ │ │ │ │
+    #        │ │ │ │ │
+    #        * * * * *
+    - cron: '0 0 * * 0'
+
+jobs:
+  CodeQL-Build:
+    runs-on: ubuntu-latest
+
+    permissions:
+      security-events: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v2
+        with:
+          languages: typescript
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.4.0
+
+      - name: 'Cache node_modules'
+        uses: actions/cache@v3
+        env:
+          CACHE_NAME: cache-node-modules
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.CACHE_NAME }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.CACHE_NAME }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+
+      - name: Install node dependencies
+        run: yarn --frozen-lockfile
+
+      - name: Build project
+        run: yarn build
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v2
