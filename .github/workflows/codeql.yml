@@ -31,7 +31,7 @@ jobs:
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v2
         with:
-          languages: typescript
+          languages: typescript, javascript
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
