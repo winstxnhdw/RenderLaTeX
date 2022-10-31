@@ -4,7 +4,7 @@ import { rm, mkdir, cp } from 'fs/promises'
 const build_directory = 'dist'
 const external_modules = ['@napi-rs']
 
-async function main(args) {
+async function main(args: string[]) {
   await rm(build_directory, { recursive: true, force: true })
   await mkdir(build_directory)
 
