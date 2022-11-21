@@ -6,6 +6,7 @@ import { get_tweet_without_handle } from '@/bot/events/helpers'
 export const handle_mentions = async (tweet_id: string) => {
   const tweet = await twitter_client.get_tweet(tweet_id)
   const text = tweet.full_text || tweet.text
+  console.log(text)
 
   for (const command of Object.values(commands)) {
     const username = await twitter_client.get_username()
@@ -14,7 +15,7 @@ export const handle_mentions = async (tweet_id: string) => {
 
     await command.execute(twitter_client, {
       input: get_command_input(tweet_without_handle, command.name),
-      ...tweet,
+      ...tweet
     })
     return
   }
