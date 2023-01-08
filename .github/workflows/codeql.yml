@@ -37,18 +37,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18.4.0
-
-      - name: 'Cache node_modules'
-        uses: actions/cache@v3
-        env:
-          CACHE_NAME: cache-node-modules
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-build-${{ env.CACHE_NAME }}-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ env.CACHE_NAME }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
+          cache: 'yarn'
 
       - name: Install node dependencies
         run: yarn --frozen-lockfile
