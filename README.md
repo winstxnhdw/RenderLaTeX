@@ -1,7 +1,7 @@
 # @RenderLaTeX
 
-![main.yml](https://github.com/winstxnhdw/RenderLaTeX/actions/workflows/main.yml/badge.svg)
-![codeql.yml](https://github.com/winstxnhdw/RenderLaTeX/actions/workflows/codeql.yml/badge.svg)
+[![main.yml](https://github.com/winstxnhdw/RenderLaTeX/actions/workflows/main.yml/badge.svg)](https://github.com/winstxnhdw/RenderLaTeX/actions/workflows/main.yml)
+[![codeql.yml](https://github.com/winstxnhdw/RenderLaTeX/actions/workflows/codeql.yml/badge.svg)](https://github.com/winstxnhdw/RenderLaTeX/actions/workflows/codeql.yml)
 
 
 [@RenderLaTeX](https://twitter.com/RenderLaTeX) is an ultra responsive serverless LaTeX/MathJax render bot for improving accessibility in Twitter's mathematics community.
