@@ -1,6 +1,6 @@
-import { render_webp_latex } from '@/render'
 import { get_random_element } from '@/helpers'
 import type { TwitterClient } from '@/libs/Twitter/TwitterClient'
+import { render_webp_latex } from '@/render'
 
 const reply_texts = ['#LaTeX', '#Mathematics', '#Math']
 

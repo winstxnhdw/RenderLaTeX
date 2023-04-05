@@ -1,4 +1,4 @@
-import type { CommandAction } from "@/types/index"
+import type { CommandAction } from '@/types/index'
 
 export class Command {
   private readonly command_name: string

@@ -3,4 +3,4 @@ export type Resolution = {
   height: number
 }
 
-export type CommandAction = (...args: unknown[]) => Promise<unknown>
+export type CommandAction = (...args: unknown[]) => Promise<void>

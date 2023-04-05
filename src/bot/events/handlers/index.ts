@@ -1,7 +1,7 @@
-import { twitter_client } from '@/libs/Twitter'
 import { commands } from '@/bot/commands'
 import { get_command_input } from '@/bot/commands/helpers'
 import { get_tweet_without_handle } from '@/bot/events/helpers'
+import { twitter_client } from '@/libs/Twitter'
 
 export const handle_mentions = async (tweet_id: string) => {
   const tweet = await twitter_client.get_tweet(tweet_id)
@@ -17,6 +17,7 @@ export const handle_mentions = async (tweet_id: string) => {
       input: get_command_input(tweet_without_handle, command.name),
       ...tweet
     })
+
     return
   }
 }

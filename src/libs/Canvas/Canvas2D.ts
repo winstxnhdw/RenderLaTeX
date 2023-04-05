@@ -1,7 +1,7 @@
 import { Drawing } from '@/libs/Canvas/Drawing'
-import { createCanvas, Image } from '@napi-rs/canvas'
-import type { Canvas, SKRSContext2D } from '@napi-rs/canvas'
 import type { Resolution } from '@/types'
+import type { Canvas, SKRSContext2D } from '@napi-rs/canvas'
+import { createCanvas, Image } from '@napi-rs/canvas'
 
 const image = new Image()
 
