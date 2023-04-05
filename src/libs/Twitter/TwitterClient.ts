@@ -1,5 +1,12 @@
+import type {
+  SendTweetV2Params,
+  TweetV1,
+  TweetV2PostTweetResult,
+  TwitterApiTokens,
+  TwitterApiv1,
+  TwitterApiv2
+} from 'twitter-api-v2'
 import { TwitterApi } from 'twitter-api-v2'
-import type { SendTweetV2Params, TwitterApiTokens, TwitterApiv1, TwitterApiv2, TweetV1 } from 'twitter-api-v2'
 
 type MediaOptions = {
   mimeType: string
@@ -22,11 +29,11 @@ export class TwitterClient {
     this.client_v2 = this.client.v2
   }
 
-  get internal() {
+  get internal(): TwitterApi {
     return this.client
   }
 
-  async get_username() {
+  async get_username(): Promise<string> {
     const me = await this.client_v2.me()
     return me.data.username
   }
@@ -38,19 +45,27 @@ export class TwitterClient {
     return tweet
   }
 
-  async reply(text: string, in_reply_to_status_id: string, options?: Partial<SendTweetV2Params>) {
+  async reply(
+    text: string,
+    in_reply_to_status_id: string,
+    options?: Partial<SendTweetV2Params>
+  ): Promise<TweetV2PostTweetResult> {
     const replyResult = await this.client_v2.reply(text, in_reply_to_status_id, options)
     return replyResult
   }
 
-  async reply_with_media(text: string, in_reply_to_status_id: string, media: Buffer, options: MediaOptions) {
+  async reply_with_media(
+    text: string,
+    in_reply_to_status_id: string,
+    media: Buffer,
+    options: MediaOptions
+  ): Promise<TweetV2PostTweetResult> {
     const media_id = await this.client_v1.uploadMedia(media, options)
-    const replyResult = this.reply(text, in_reply_to_status_id, {
+
+    return this.reply(text, in_reply_to_status_id, {
       media: {
         media_ids: [media_id]
       }
     })
-
-    return replyResult
   }
 }
