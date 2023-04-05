@@ -22,17 +22,16 @@ Traditionally, bots such as [@saucenaopls](https://github.com/MakotoAme/twitter-
 
 ### Available always
 
-RenderLaTeX should be available indefinitely without constant maintenance. This means that it should run on a cloud provider, like AWS. Points of failure are kept to a minimum as the bot is only dependent on the server it is hosted on and Twitter.
+Ensuring the continuous availability of the bot without requiring frequent upkeep is paramount. For this reason, the bot is hosted on a cloud provider such as AWS, minimising potential points of failure, as it relies solely on the server it is hosted on and Twitter.
 
-### Free forevever
+### Free forever
 
-The project should be free to maintain forever. I do not want to spend a single cent on this project. This is why the bot uses webhooks to receive events instead of spinning up a VPS even during periods of low traffic.
+It is imperative that the project remain cost-free to maintain indefinitely. To achieve this goal, the bot leverages webhooks to receive events, eschewing the costly option of spinning up a VPS, even during low traffic periods.
 
 ### Really responsive
 
-AWS Lambda has one of the fastest cold start times with a generous free tier. This means that the bot can respond to tweets as soon as the webhook request is consumed. Additionally, the bot is not reliant on API requests as its MathJax engine renders LaTeX in-house.
+By harnessing the rapid cold start time of AWS Lambda, the bot can deliver near-instant responses to incoming tweets. Furthermore, the bot's MathJax engine empowers it to independently render LaTeX, circumventing the need for external API requests.
 
 ## Credits
 
 Many thanks to [Alyssa](https://github.com/alyssaxchua) for the amazing Twitter banner and profile picture!
-
