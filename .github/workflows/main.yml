@@ -9,19 +9,27 @@ on:
       - 'package.json'
       - 'tsconfig.json'
 
+permissions:
+  id-token: write
+
 jobs:
-  Deploy:
+  deploy:
     runs-on: ubuntu-latest
     env:
       LAMBDA_FUNCTION_NAME: ${{ vars.LAMBDA_FUNCTION_NAME }}
+      TWITTER_API_KEY: ${{ secrets.TWITTER_API_KEY }}
+      TWITTER_API_SECRET: ${{ secrets.TWITTER_API_SECRET }}
+      TWITTER_OAUTH_TOKEN: ${{ secrets.TWITTER_OAUTH_TOKEN }}
+      TWITTER_OAUTH_SECRET: ${{ secrets.TWITTER_OAUTH_SECRET }}
+      TWITTER_ENVIRONMENT_LABEL: ${{ secrets.TWITTER_ENVIRONMENT_LABEL }}
+      WEBHOOK_ENDPOINT: ${{ secrets.WEBHOOK_ENDPOINT }}
 
     steps:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v2.0.0
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ap-southeast-1
+          role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
+          aws-region: ${{ secrets.AWS_REGION }}
 
       - name: Checkout repository
         uses: actions/checkout@v3
