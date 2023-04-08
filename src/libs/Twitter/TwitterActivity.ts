@@ -14,12 +14,6 @@ export class TwitterActivity {
     return this.activity
   }
 
-  async register_webhook(webhook_endpoint: string) {
-    await this.activity.deleteAllWebhooks()
-    await this.activity.registerWebhook(webhook_endpoint)
-    await this.activity.subscribe()
-  }
-
   handle_crc(crc_token: string | undefined): CrcResponse | string {
     return this.handler.handle_crc(crc_token)
   }

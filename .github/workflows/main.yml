@@ -22,7 +22,6 @@ jobs:
       TWITTER_OAUTH_TOKEN: ${{ secrets.TWITTER_OAUTH_TOKEN }}
       TWITTER_OAUTH_SECRET: ${{ secrets.TWITTER_OAUTH_SECRET }}
       TWITTER_ENVIRONMENT_LABEL: ${{ secrets.TWITTER_ENVIRONMENT_LABEL }}
-      WEBHOOK_ENDPOINT: ${{ secrets.WEBHOOK_ENDPOINT }}
 
     steps:
       - name: Configure AWS Credentials
@@ -37,7 +36,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 18
           cache: 'yarn'
 
       - name: Install node dependencies
