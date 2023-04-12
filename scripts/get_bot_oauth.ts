@@ -1,11 +1,9 @@
 import { config } from '@/config'
-import readline from 'readline/promises'
+import { stdin, stdout } from 'process'
+import { createInterface } from 'readline/promises'
 
 async function main() {
-  const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-  })
+  const rl = createInterface(stdin, stdout)
 
   const developer_url = `https://twitter.com/oauth/request_token?oauth_consumer_key=${config.TWITTER_API_KEY}&oauth_callback=oob`
   console.log(`[!] Login to your *DEVELOPER* account and visit this URL:\n${developer_url}`)
@@ -17,17 +15,12 @@ async function main() {
   const pin = await rl.question('[?] Enter the PIN: ')
   const response = await fetch(
     `https://twitter.com/oauth/access_token?oauth_token=${oauth_token}&oauth_verifier=${pin}`,
-    {
-      method: 'POST'
-    }
+    { method: 'POST' }
   )
 
   console.log('[*] Your OAuth tokens are:')
   const oauth_tokens = await response.text()
-
-  for (const token of oauth_tokens.split('&').slice(0, 2)) {
-    console.log(token)
-  }
+  oauth_tokens.split('&').slice(0, 2).map(console.log)
 }
 
 main()
