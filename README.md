@@ -1,6 +1,7 @@
 # @RenderLaTeX
 
 [![main.yml](https://github.com/winstxnhdw/RenderLaTeX/actions/workflows/main.yml/badge.svg)](https://github.com/winstxnhdw/RenderLaTeX/actions/workflows/main.yml)
+[![dependabot.yml](https://github.com/winstxnhdw/RenderLaTeX/actions/workflows/dependabot.yml/badge.svg)](https://github.com/winstxnhdw/RenderLaTeX/actions/workflows/dependabot.yml)
 
 [@RenderLaTeX](https://twitter.com/RenderLaTeX) is an ultra responsive serverless LaTeX/MathJax render bot for improving accessibility in Twitter's mathematics community.
 
