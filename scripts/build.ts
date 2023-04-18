@@ -1,5 +1,6 @@
 import { build } from 'esbuild'
-import { rm, mkdir, cp } from 'fs/promises'
+import { cp, mkdir, rm } from 'fs/promises'
+import { argv } from 'process'
 
 const build_directory = 'dist'
 const external_modules = ['@napi-rs']
@@ -8,11 +9,18 @@ async function main(args: string[]) {
   await rm(build_directory, { recursive: true, force: true })
   await mkdir(build_directory)
 
-  for (const module of external_modules) {
-    await cp(`node_modules/${module}`, `${build_directory}/node_modules/${module}`, {
-      recursive: true
-    })
-  }
+  const results = await Promise.allSettled(
+    external_modules.map((module) =>
+      cp(`node_modules/${module}`, `${build_directory}/node_modules/${module}`, {
+        recursive: true
+      })
+    )
+  )
+
+  results.forEach((result) => {
+    if (result.status !== 'rejected') return
+    console.error(result.reason)
+  })
 
   await build({
     entryPoints: ['src/index.ts'],
@@ -24,4 +32,4 @@ async function main(args: string[]) {
   })
 }
 
-main(process.argv)
+main(argv)
