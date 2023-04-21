@@ -17,11 +17,6 @@ jobs:
     runs-on: ubuntu-latest
     env:
       LAMBDA_FUNCTION_NAME: ${{ vars.LAMBDA_FUNCTION_NAME }}
-      TWITTER_API_KEY: ${{ secrets.TWITTER_API_KEY }}
-      TWITTER_API_SECRET: ${{ secrets.TWITTER_API_SECRET }}
-      TWITTER_OAUTH_TOKEN: ${{ secrets.TWITTER_OAUTH_TOKEN }}
-      TWITTER_OAUTH_SECRET: ${{ secrets.TWITTER_OAUTH_SECRET }}
-      TWITTER_ENVIRONMENT_LABEL: ${{ secrets.TWITTER_ENVIRONMENT_LABEL }}
 
     steps:
       - name: Configure AWS Credentials
