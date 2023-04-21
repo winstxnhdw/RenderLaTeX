@@ -1,9 +1,10 @@
 import { TwitterActivity } from '@/libs/Twitter/TwitterActivity'
 import 'dotenv/config'
 import { cleanEnv, str } from 'envalid'
+import { env } from 'process'
 
 async function main() {
-  const config = cleanEnv(process.env, {
+  const config = cleanEnv(env, {
     TWITTER_API_KEY: str(),
     TWITTER_API_SECRET: str(),
     TWITTER_OAUTH_TOKEN: str(),
