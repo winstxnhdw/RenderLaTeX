@@ -1,6 +1,6 @@
 import { TwitterActivity } from '@/libs/Twitter/TwitterActivity'
 import 'dotenv/config'
-import { cleanEnv, str } from 'envalid'
+import { cleanEnv, str, url } from 'envalid'
 import { env } from 'process'
 
 async function main() {
@@ -10,7 +10,7 @@ async function main() {
     TWITTER_OAUTH_TOKEN: str(),
     TWITTER_OAUTH_SECRET: str(),
     TWITTER_ENVIRONMENT_LABEL: str(),
-    WEBHOOK_ENDPOINT: str()
+    WEBHOOK_ENDPOINT: url()
   })
 
   const twitter_activity = new TwitterActivity(config.TWITTER_ENVIRONMENT_LABEL, {
