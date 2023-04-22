@@ -11,7 +11,6 @@
   },
   "dependencies": {
     "@napi-rs/canvas": "^0.1.39",
-    "dotenv": "^16.0.3",
     "envalid": "^7.3.1",
     "mathjax-full": "^3.2.2",
     "twitter-api-v2": "^1.14.2",
@@ -27,6 +26,7 @@
     "@typescript-eslint/eslint-plugin": "^5.57.1",
     "@typescript-eslint/parser": "^5.57.1",
     "chai": "^4.3.7",
+    "dotenv": "^16.0.3",
     "esbuild": "^0.17.15",
     "eslint": "^8.38.0",
     "eslint-config-prettier": "^8.8.0",
