@@ -61,4 +61,4 @@ jobs:
 
 
       - name: Register the webhook
-        run: yarn webhook
+        run: yarn webhook || yarn webhook
