@@ -1,12 +1,15 @@
 name: Register Webhook
 
-on: [workflow_dispatch]
+on:
+  workflow_dispatch:
+  push:
+    paths: ['.github/workflows/update-webhook.yml']
 
 permissions:
   id-token: write
 
 jobs:
-  register:
+  register-environment:
     runs-on: ubuntu-latest
     env:
       LAMBDA_FUNCTION_NAME: ${{ vars.LAMBDA_FUNCTION_NAME }}
@@ -15,7 +18,6 @@ jobs:
       TWITTER_OAUTH_TOKEN: ${{ secrets.TWITTER_OAUTH_TOKEN }}
       TWITTER_OAUTH_SECRET: ${{ secrets.TWITTER_OAUTH_SECRET }}
       TWITTER_ENVIRONMENT_LABEL: ${{ secrets.TWITTER_ENVIRONMENT_LABEL }}
-      WEBHOOK_ENDPOINT: ${{ secrets.WEBHOOK_ENDPOINT }}
 
     steps:
       - name: Configure AWS Credentials
@@ -23,7 +25,28 @@ jobs:
         with:
           role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
           aws-region: ${{ secrets.AWS_REGION }}
-          
+
+      - name: Update AWS Lambda environment variables
+        run: |
+          aws lambda update-function-configuration --function-name $LAMBDA_FUNCTION_NAME --environment "Variables={ \
+            TWITTER_API_KEY=$TWITTER_API_KEY, \
+            TWITTER_API_SECRET=$TWITTER_API_SECRET, \
+            TWITTER_OAUTH_TOKEN=$TWITTER_OAUTH_TOKEN, \
+            TWITTER_OAUTH_SECRET=$TWITTER_OAUTH_SECRET, \
+            TWITTER_ENVIRONMENT_LABEL=$TWITTER_ENVIRONMENT_LABEL \
+          }"
+
+  register-webhook:
+    runs-on: ubuntu-latest
+    env:
+      TWITTER_API_KEY: ${{ secrets.TWITTER_API_KEY }}
+      TWITTER_API_SECRET: ${{ secrets.TWITTER_API_SECRET }}
+      TWITTER_OAUTH_TOKEN: ${{ secrets.TWITTER_OAUTH_TOKEN }}
+      TWITTER_OAUTH_SECRET: ${{ secrets.TWITTER_OAUTH_SECRET }}
+      TWITTER_ENVIRONMENT_LABEL: ${{ secrets.TWITTER_ENVIRONMENT_LABEL }}
+      WEBHOOK_ENDPOINT: ${{ secrets.WEBHOOK_ENDPOINT }}
+
+    steps:
       - name: Checkout repository
         uses: actions/checkout@v3
 
@@ -36,15 +59,6 @@ jobs:
       - name: Install Yarn dependencies
         run: yarn --frozen-lockfile
 
-      - name: Update AWS Lambda environment variables
-        run: |
-          aws lambda update-function-configuration --function-name $LAMBDA_FUNCTION_NAME --environment "Variables={ \
-            TWITTER_API_KEY=$TWITTER_API_KEY, \
-            TWITTER_API_SECRET=$TWITTER_API_SECRET, \
-            TWITTER_OAUTH_TOKEN=$TWITTER_OAUTH_TOKEN, \
-            TWITTER_OAUTH_SECRET=$TWITTER_OAUTH_SECRET, \
-            TWITTER_ENVIRONMENT_LABEL=$TWITTER_ENVIRONMENT_LABEL \
-          }"
 
       - name: Register the webhook
         run: yarn webhook
