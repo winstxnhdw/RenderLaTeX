@@ -3,7 +3,7 @@ name: Register Webhook
 on:
   workflow_dispatch:
   push:
-    paths: ['.github/workflows/update-webhook.yml']
+    paths: [.github/workflows/update-webhook.yml]
 
 permissions:
   id-token: write
