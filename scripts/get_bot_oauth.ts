@@ -1,8 +1,18 @@
-import { config } from '@/config'
-import { stdin, stdout } from 'process'
+import 'dotenv/config'
+import { cleanEnv, str, url } from 'envalid'
+import { env, stdin, stdout } from 'process'
 import { createInterface } from 'readline/promises'
 
 async function main() {
+  const config = cleanEnv(env, {
+    TWITTER_API_KEY: str(),
+    TWITTER_API_SECRET: str(),
+    TWITTER_OAUTH_TOKEN: str(),
+    TWITTER_OAUTH_SECRET: str(),
+    TWITTER_ENVIRONMENT_LABEL: str(),
+    WEBHOOK_ENDPOINT: url()
+  })
+
   const rl = createInterface(stdin, stdout)
 
   const developer_url = `https://twitter.com/oauth/request_token?oauth_consumer_key=${config.TWITTER_API_KEY}&oauth_callback=oob`
