@@ -1,16 +1,11 @@
 import 'dotenv/config'
-import { cleanEnv, str, url } from 'envalid'
+import { cleanEnv, str } from 'envalid'
 import { env, stdin, stdout } from 'process'
 import { createInterface } from 'readline/promises'
 
 async function main() {
   const config = cleanEnv(env, {
-    TWITTER_API_KEY: str(),
-    TWITTER_API_SECRET: str(),
-    TWITTER_OAUTH_TOKEN: str(),
-    TWITTER_OAUTH_SECRET: str(),
-    TWITTER_ENVIRONMENT_LABEL: str(),
-    WEBHOOK_ENDPOINT: url()
+    TWITTER_API_KEY: str()
   })
 
   const rl = createInterface(stdin, stdout)
