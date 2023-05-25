@@ -3,11 +3,11 @@ name: Deploy
 on:
   push:
     paths:
-      - 'src/**'
-      - 'tests/**'
-      - '.github/workflows/main.yml'
-      - 'package.json'
-      - 'tsconfig.json'
+      - src/**
+      - tests/**
+      - .github/workflows/main.yml
+      - package.json
+      - tsconfig.json
 
 permissions:
   id-token: write
