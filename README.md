@@ -38,7 +38,7 @@ It is imperative that the project remain cost-free to maintain indefinitely. To 
 
 ### Really responsive
 
-By harnessing the rapid cold start time of AWS Lambda, the bot can deliver near-instant responses to incoming tweets. Furthermore, the bot's MathJax engine empowers it to independently render LaTeX, circumventing the need for external API requests.
+By harnessing the increased performance of AWS Lambda Function URLs, the bot can deliver near-instant responses to incoming tweets. Furthermore, the bot's MathJax engine empowers it to independently render LaTeX, circumventing the need for external API requests.
 
 ## Credits
 
