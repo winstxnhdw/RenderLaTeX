@@ -4,7 +4,7 @@
 [![update-webhook.yml](https://github.com/winstxnhdw/RenderLaTeX/actions/workflows/update-webhook.yml/badge.svg)](https://github.com/winstxnhdw/RenderLaTeX/actions/workflows/update-webhook.yml)
 [![dependabot.yml](https://github.com/winstxnhdw/RenderLaTeX/actions/workflows/dependabot.yml/badge.svg)](https://github.com/winstxnhdw/RenderLaTeX/actions/workflows/dependabot.yml)
 
-[@RenderLaTeX](https://twitter.com/RenderLaTeX) is an ultra responsive serverless in-memory LaTeX/MathJax render bot for improving accessibility in Twitter's mathematics community.
+[@RenderLaTeX](https://twitter.com/RenderLaTeX) is a reliable and responsive serverless in-memory LaTeX/MathJax render bot for improving accessibility in Twitter's mathematics community.
 
 <div align="center">
     <img src="resources/banner.png" />
@@ -26,7 +26,7 @@ yarn oauth
 
 ## Project Objectives
 
-Traditionally, bots such as [@saucenaopls](https://github.com/MakotoAme/twitter-saucenao) and [@aceCourtBot2](https://github.com/LuisMayo/ace-attorney-twitter-bot) must be spun up indefinitely to poll the Twitter servers for updates. These bots are expensive to maintain, while being slow and frustrating for their users. Instead, [@RenderLaTeX](https://twitter.com/RenderLaTeX) relies on [webhooks](https://developer.twitter.com/en/docs/twitter-api/premium/account-activity-api/guides/getting-started-with-webhooks) to receive tweets, enabling near instant response at no cost under acceptable loads. Specifically, [@RenderLaTeX's](https://twitter.com/RenderLaTeX) architecture was designed to meet the following objectives.
+Traditionally, bots such as [@saucenaopls](https://github.com/MakotoAme/twitter-saucenao) and [@aceCourtBot2](https://github.com/LuisMayo/ace-attorney-twitter-bot) must be spun up indefinitely to poll the Twitter servers for updates. These bots are expensive to maintain, while being slow and frustrating for their users due to Twitter rate limits. Instead, [@RenderLaTeX](https://twitter.com/RenderLaTeX) relies on [webhooks](https://developer.twitter.com/en/docs/twitter-api/premium/account-activity-api/guides/getting-started-with-webhooks) to receive tweets, enabling near instant response at no cost under acceptable loads. Specifically, [@RenderLaTeX's](https://twitter.com/RenderLaTeX) architecture was designed to meet the following objectives.
 
 ### Available always
 
