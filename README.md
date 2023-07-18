@@ -1,5 +1,7 @@
 # @RenderLaTeX
 
+> RenderLaTeX has been archived indefinitely due to changes in Twitter's API pricing model. See the announcement [here](https://twitter.com/RenderLaTeX/status/1652381547499225088).
+
 [![main.yml](https://github.com/winstxnhdw/RenderLaTeX/actions/workflows/main.yml/badge.svg)](https://github.com/winstxnhdw/RenderLaTeX/actions/workflows/main.yml)
 [![update-webhook.yml](https://github.com/winstxnhdw/RenderLaTeX/actions/workflows/update-webhook.yml/badge.svg)](https://github.com/winstxnhdw/RenderLaTeX/actions/workflows/update-webhook.yml)
 [![dependabot.yml](https://github.com/winstxnhdw/RenderLaTeX/actions/workflows/dependabot.yml/badge.svg)](https://github.com/winstxnhdw/RenderLaTeX/actions/workflows/dependabot.yml)
