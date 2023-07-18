@@ -4,7 +4,7 @@
 [![update-webhook.yml](https://github.com/winstxnhdw/RenderLaTeX/actions/workflows/update-webhook.yml/badge.svg)](https://github.com/winstxnhdw/RenderLaTeX/actions/workflows/update-webhook.yml)
 [![dependabot.yml](https://github.com/winstxnhdw/RenderLaTeX/actions/workflows/dependabot.yml/badge.svg)](https://github.com/winstxnhdw/RenderLaTeX/actions/workflows/dependabot.yml)
 
-[@RenderLaTeX](https://twitter.com/RenderLaTeX) is a reliable and responsive serverless in-memory LaTeX/MathJax render bot for improving accessibility in Twitter's mathematics community.
+[@RenderLaTeX](https://twitter.com/RenderLaTeX) is a reliable and responsive serverless in-memory LaTeX/MathJax render bot for improving accessibility in Twitter's mathematics community. Check it out in action [here](https://twitter.com/RenderLaTeX)!
 
 <div align="center">
     <img src="resources/banner.png" />
