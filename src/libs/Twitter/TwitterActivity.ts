@@ -1,4 +1,4 @@
-import type { Auth, CrcResponse, WebhookHandlable } from 'webhoot'
+import type { ActivityEvent, Auth, CrcResponse, WebhookHandlable } from 'webhoot'
 import { Activity } from 'webhoot'
 
 export class TwitterActivity {
@@ -21,7 +21,7 @@ export class TwitterActivity {
   async handle_post(body: string | undefined): Promise<boolean> {
     if (body === undefined) return false
 
-    await this.handler.handle_post(JSON.parse(body))
+    await this.handler.handle_post(JSON.parse(body) as ActivityEvent)
     return true
   }
 }

@@ -28,4 +28,4 @@ async function main() {
   oauth_tokens.split('&').slice(0, 2).map(console.log)
 }
 
-main()
+void main()

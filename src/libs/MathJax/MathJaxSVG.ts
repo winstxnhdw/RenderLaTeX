@@ -1,11 +1,11 @@
-import { mathjax } from 'mathjax-full/js/mathjax'
-import { TeX } from 'mathjax-full/js/input/tex'
-import { SVG } from 'mathjax-full/js/output/svg'
+import type { Resolution } from '@/types'
+import type { LiteAttributeList, LiteElement } from 'mathjax-full/js/adaptors/lite/Element'
 import { liteAdaptor } from 'mathjax-full/js/adaptors/liteAdaptor'
 import { RegisterHTMLHandler } from 'mathjax-full/js/handlers/html'
+import { TeX } from 'mathjax-full/js/input/tex'
 import { AllPackages } from 'mathjax-full/js/input/tex/AllPackages'
-import type { LiteElement, LiteAttributeList } from 'mathjax-full/js/adaptors/lite/Element'
-import type { Resolution } from '@/types'
+import { mathjax } from 'mathjax-full/js/mathjax'
+import { SVG } from 'mathjax-full/js/output/svg'
 
 const adaptor = liteAdaptor()
 RegisterHTMLHandler(adaptor)
@@ -19,7 +19,7 @@ export class MathJaxSVG {
   private readonly node: LiteElement
 
   constructor(mathjax_input: string) {
-    this.node = mathjax_document.convert(mathjax_input)
+    this.node = mathjax_document.convert(mathjax_input) as LiteElement
   }
 
   private get attributes(): LiteAttributeList {
@@ -28,12 +28,12 @@ export class MathJaxSVG {
   }
 
   get width(): number {
-    const width = this.attributes['width']
+    const width = this.attributes['width'] as string
     return Number(width)
   }
 
   get height(): number {
-    const height = this.attributes['height']
+    const height = this.attributes['height'] as string
     return Number(height)
   }
 

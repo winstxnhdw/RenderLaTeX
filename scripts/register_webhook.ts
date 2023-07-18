@@ -25,4 +25,4 @@ async function main() {
   await twitter_activity.subscribe()
 }
 
-main()
+void main()

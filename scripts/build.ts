@@ -32,4 +32,4 @@ async function main(args: string[]) {
   })
 }
 
-main(argv)
+void main(argv)
